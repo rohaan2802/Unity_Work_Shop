@@ -14,7 +14,7 @@ The canvas on the website is a **JavaScript concept illustration**. It is not a 
 | GitHub Pages | https://rohaan2802.github.io/Unity_Work_Shop/ |
 | Participation certificate | https://rohaan2802.github.io/Unity_Work_Shop/proof/techconnect-2024.pdf |
 
-There is no GitHub Release for this portfolio. Do not look for a player zip on the Releases page. None was created.
+This repository has no GitHub Release.
 
 ## Table of contents
 
@@ -29,16 +29,13 @@ There is no GitHub Release for this portfolio. Do not look for a player zip on t
 9. [Notes and topic explanations](#notes-and-topic-explanations)
 10. [Website](#website)
 11. [Screenshots](#screenshots)
-12. [Tests and the results that were actually recorded](#tests-and-the-results-that-were-actually-recorded)
+12. [Tests](#tests)
 13. [Limitations](#limitations)
 14. [Troubleshooting](#troubleshooting)
 15. [Provenance](#provenance)
 16. [What you need in order to run it](#what-you-need-in-order-to-run-it)
-17. [Ideas that are not in the scene yet](#ideas-that-are-not-in-the-scene-yet)
-18. [Publishing this folder](#publishing-this-folder)
-19. [What Unity regenerates](#what-unity-regenerates)
-20. [About text and topics](#about-text-and-topics)
-21. [Author](#author)
+17. [What Unity regenerates](#what-unity-regenerates)
+18. [Author](#author)
 
 ## Overview
 
@@ -213,7 +210,7 @@ Setup:
 3. Open `Assets/Scenes/CourtyardWalk.unity`.
 4. Press Play.
 
-The Editor was **not** available while this tree was assembled. Treat the steps as the intended procedure, not as a log of a successful import. If Unity rewrites `ProjectVersion.txt` because a different patch is installed, that rewrite is the Editor's, and it should be reviewed before any later commit.
+The Unity Editor was not run on this folder here. If Unity rewrites `ProjectVersion.txt` because a different patch is installed, that rewrite is the Editor's, and it should be reviewed before any later commit.
 
 Build, when you have the Editor: File, Build Profiles, desktop target, build into a directory that is not committed. `.gitignore` ignores `Build/` and `Builds/`. Do not point the website at that output unless the files are actually published, and do not publish a build that you produced by dropping Starter Assets back in without checking the license.
 
@@ -427,7 +424,7 @@ Footer and the back-to-top button.
 Learning filter on the home page, dark theme.
 
 
-## Tests and the results that were actually recorded
+## Tests
 
 Command:
 
@@ -452,14 +449,13 @@ python tools/validate_portfolio.py
 
 That script checks the tree shape, the 30 screenshot files, README image paths, internal links, forbidden names, the bootstrap GUID, and the shared layout numbers. Its output is the pass or fail of the file set. It does not open Unity.
 
-Not run, and not claimed:
+Not run:
 
 - Unity Editor import of `CourtyardWalk.unity`
 - Play Mode
 - A player build
 - WebGL
 - A headset
-- GitHub Pages
 
 ## Limitations
 
@@ -513,22 +509,6 @@ The scripts and the scene are not a standalone program. On a PC that can run Uni
 
 A built player is a later step from that same Editor: File, Build Profiles, desktop target. This tree has no player in it. The browser page is JavaScript.
 
-## Ideas that are not in the scene yet
-
-These are next steps, not features that already run.
-
-- Restore `vrscene` only as a second project, or only after the Starter Assets prefabs, both character files, URP, and the XR package are beside that scene file. Then enable `NewMonoBehaviourScript` only after the class name no longer hides `CharacterController`.
-- Add a jump on the walker if a later pass wants one. The current controller stays on the ground.
-- Keep Courtyard Walk on the Input Manager. An Input System version would be a separate script, not a silent swap.
-
-## Publishing this folder
-
-Suggested repository name: **Unity_Work_Shop**. Pages, when you turn them on, serve this root. `.nojekyll` is included. No Release is required for Courtyard Walk, and the site does not link to one.
-
-`.gitignore` ignores Library, Temp, Obj, Logs, UserSettings, Build, and generated solution files. `.gitattributes` does not add a large-file filter.
-
-Starter Assets, the character meshes, and the desert-city pack are not in this folder. Their licenses are named in the provenance page. They are not marked clear to publish, and they are not marked forbidden. A Release of a large file would still be a public upload, and nothing here depends on one.
-
 ## What Unity regenerates
 
 | Regenerated, omitted on purpose | Required, present |
@@ -540,16 +520,6 @@ Starter Assets, the character meshes, and the desert-city pack are not in this f
 | A player under `builds/` | The scripts that build the yard at Play |
 
 The workshop movement scripts are the files under `notes/movement/`. Unity writes a fresh solution when the runnable project is opened.
-
-## About text and topics
-
-Suggested description:
-
-> Unity 6 workshop notes and Courtyard Walk, an original primitive scene for movement, collision, collectibles, reset, and a HUD. Third-party workshop assets are not included.
-
-Suggested topics: `unity`, `unity6`, `csharp`, `game-development`, `workshop`, `fast-nuces`.
-
-Suggested website field, only after Pages works: `https://rohaan2802.github.io/Unity_Work_Shop/`.
 
 ## Author
 

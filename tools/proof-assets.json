@@ -1,5 +1,4 @@
 {
-  "note": "These three files are installed on the public roots and are not inside the website patch zip. A local check should match path, bytes, and sha256. This workspace did not contain the bytes.",
   "assets": [
     {
       "path": "proof/photos/workshop-dsc07283.jpg",
