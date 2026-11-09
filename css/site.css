@@ -74,7 +74,12 @@ body {
     var(--bg);
 }
 
-img, svg, canvas { max-width: 100%; }
+img, svg {
+  max-width: 100%;
+  height: auto;
+}
+
+canvas { max-width: 100%; }
 
 a {
   color: var(--accent);
@@ -427,16 +432,26 @@ th, td {
 
 .back-top.is-visible { display: inline-flex; }
 
-.figure { margin: 1.1rem 0 1.7rem; }
+.figure,
+.shot { margin: 1.1rem 0 1.7rem; }
 
-.figure img {
+.figure img,
+.shot img,
+.shot video {
   border: 1px solid var(--line);
   border-radius: 1rem;
   display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: min(70vh, 52rem);
+  object-fit: contain;
+  object-position: center;
   box-shadow: var(--shadow);
 }
 
-.figure figcaption { color: var(--muted); margin-top: 0.45rem; }
+.figure figcaption,
+.shot figcaption { color: var(--muted); margin-top: 0.45rem; }
 
 .tree { white-space: pre-wrap; overflow-wrap: anywhere; }
 
@@ -452,7 +467,9 @@ th, td {
 
 #proof video {
   width: 100%;
-  max-height: 70vh;
+  height: auto;
+  max-height: min(70vh, 52rem);
+  object-fit: contain;
   background: #111;
   border-radius: 1rem;
 }
