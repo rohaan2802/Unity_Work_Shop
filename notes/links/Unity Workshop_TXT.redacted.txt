@@ -1,0 +1,39 @@
+using UnityEngine;
+
+public class CharacterController : MonoBehaviour
+{
+// Start is called once before the first execution of Update after the MonoBehaviour is created void Start()
+{
+
+}
+
+// Update is called once per frame void Update()
+{
+if (Input.GetAxis("Horizontal")>-2)
+{
+transform.position += new Vector3(Input.GetAxis("Horizontal") * Time.deltaTime, 0, 0);
+}
+
+if (Input.GetAxis("Vertical") > -2)
+{
+transform.position += new Vector3(0, 0, Input.GetAxis("Vertical") * Time.deltaTime);
+}
+}
+}
+
+
+=========================================================================
+
+The original notes file included an external drive link and a block of unofficial asset-download sites, including a heading the notes themselves called pirated. Those URLs are omitted from this copy. The unredacted file stays in the local workshop archive and is not part of the publishable tree.
+
+Official and store links the notes recorded:
+
+https://learn.unity.com/pathway/unity-essentials
+https://unity.com/download
+https://www.mixamo.com/#/
+https://sketchfab.com/
+https://www.turbosquid.com
+https://assetstore.unity.com/packages/3d/environments/historic/polylised-medieval-desert-city-94557
+https://assetstore.unity.com/packages/essentials/starter-assets-character-controllers-urp-267961
+
+Unity Learning.txt also names fab.com. None of those pages are files in this tree, and a store link is not permission to republish a package.

@@ -1,0 +1,31 @@
+update --> call on each frame..... (like infinite loop)
+late update -> skip the particular time only once ( e.g time is 10s set...call after 10s and call continously)
+
+fixed update-->skip the fixed time each time call(e.g time is 10s set...call after 10s and then after 10s execute and then call after 10s)
+
+awake function() ---> first this function calls , ( if we want to make any settings before any thing happens before start function and update function ) and this func called once
+
+start function() ---> this function also calls once and it loads the script
+
+update function()---> if i need to update anything ater each call, like transformation of character etc....
+
+TOTAL PIPELINES IN UNITY ARE 3
+
+PIPELINES are used for the performance , Graphics in games but in dev ops used for data transmission
+Shader Graphs, (code to run GPU)
+1) builtin render pipeline // run the low quality asset on device
+2) Universal render pipeline // run the low quality assets in a certain range on device
+3) Scriptable Render pipeline // by writing own script to use the pipeline
+4) High Definition Render Pipeline // More High Quality, on PC's
+https://www.mixamo.com/#/?page=1&type=Character
+
+fab.com  
+
+https://assetstore.unity.com/
+
+open world game, infinite loop
+
+
+oculus rift........it don't have any processor and ram...etc, it takes device computational power, just works like simulate the data from the laptop/computer
+oculus quest2...... i=android based also have own battery pack and have processing power , have a meta quest store, apks
+meta quest3...... ram and processor camera are good as compare to quest2

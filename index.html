@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Unity Work Shop</title>
+<meta name="description" content="Unity 6 workshop portfolio by Mohammad Rohaan. Courtyard Walk is an original primitive demo. The canvas on the home page is a JavaScript concept illustration, not a Unity WebGL build.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/site.css">
+<script>
+(function () {
+  try {
+    var q = new URLSearchParams(location.search).get("theme");
+    var saved = localStorage.getItem("courtyard-theme");
+    var theme = q || saved || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    if (theme !== "light" && theme !== "dark") theme = "light";
+    document.documentElement.setAttribute("data-theme", theme);
+  } catch (e) {
+    document.documentElement.setAttribute("data-theme", "light");
+  }
+})();
+</script>
+</head>
+<body data-root="">
+<a class="skip" href="#content">Skip to content</a>
+<header class="site-header">
+  <div class="wrap header-bar">
+    <a class="brand" href="index.html"><strong>Unity Work Shop</strong><span>Mohammad Rohaan</span></a>
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <button type="button" class="theme-toggle" id="theme-toggle" aria-pressed="false">Dark theme</button>
+  </div>
+  <div class="wrap">
+    <nav class="site-nav" id="site-nav" aria-label="Primary"><a href="index.html" aria-current="page">Home</a><a href="learning/index.html">Learning</a><a href="source/index.html">Source</a><a href="project/index.html">Project</a><a href="provenance/index.html">Provenance</a><a href="screenshots/index.html">Screenshots</a></nav>
+  </div>
+</header>
+<main id="content" class="wrap">
+
+<section class="hero" id="top">
+  <p class="kicker">FAST-NUCES · Unity 6000.0.26f1</p>
+  <h1>Unity workshop, with the courtyard written from primitives</h1>
+  <p class="lede">The workshop left two movement scripts, notes on the player loop and on Rift and Quest headsets, a template scene, and <code>vrscene</code>. Courtyard Walk is the scene that runs here. The original scene files are kept, with their GUIDs, outside <code>Assets</code>.</p>
+  <p class="banner">The name <strong>Unity_Work_Shop</strong> and the Pages address below are the planned publication names. They are not live. Nothing in this folder was pushed while the tree was prepared.</p>
+</section>
+<section id="live-links">
+  <h2>Live links</h2>
+  <ul class="grid-links">
+    <li class="card"><span class="what">What</span><a href="https://github.com/rohaan2802/Unity_Work_Shop">Planned repository Unity_Work_Shop</a><p>Not live yet. Rename the existing repository instead of creating a second one.</p></li>
+    <li class="card"><span class="what">What</span><a href="https://rohaan2802.github.io/Unity_Work_Shop/">Planned GitHub Pages site</a><p>Not live yet. Pages would serve this same root, including <code>index.html</code>.</p></li>
+    <li class="card"><span class="what">What</span><a href="https://github.com/rohaan2802/Unity-WorkShop">Existing repository Unity-WorkShop</a><p>This is the repository that exists today, under the previous name. The planned name is not live yet.</p></li>
+    <li class="card"><span class="what">What</span><a href="Assets/Scenes/CourtyardWalk.unity">Courtyard Walk scene</a><p>Light, camera, and bootstrap. Press Play in Unity 6000.0.26f1. No player build is stored here.</p></li>
+    <li class="card"><span class="what">What</span><a href="notes/movement/CharacterController.cs">Original movement script</a><p>Unchanged workshop file. The axis test is the bug the new walker removes.</p></li>
+    <li class="card"><span class="what">What</span><a href="learning/player-loop.html">Corrected player-loop notes</a><p>Read beside the original <code>Unity Learning.txt</code>.</p></li>
+    <li class="card"><span class="what">What</span><a href="#concept-demo">Browser concept illustration</a><p>JavaScript on this page. Not Unity. Not WebGL.</p></li>
+    <li class="card"><span class="what">What</span><a href="workshop-evidence/README.md">Workshop scenes</a><p>Small <code>vrscene</code> and the 3.5 MB <code>VRScene</code> are different files. Neither is imported into the runnable project.</p></li>
+    <li class="card"><span class="what">What</span><a href="proof/techconnect-2024.pdf">Participation certificate</a><p>TechConnect 2024 Unity Basics Bootcamp Competition. Participation only. Not an award.</p></li>
+    <li class="card"><span class="what">What</span><a href="proof/lecture-slides.pptx">Lecture slides</a><p>17 slides. Presenter Usama Bin Imran. Mohammad Rohaan is credited as workshop participant, not as the author.</p></li>
+  </ul>
+</section>
+<section id="proof">
+  <h2>Workshop proof</h2>
+  <p>Participation record, the lecture deck, two selected photographs, and one recording. The other workshop photographs are not in this folder.</p>
+  <ul class="grid-links">
+    <li class="card"><span class="what">Certificate</span><a href="proof/techconnect-2024.pdf">TechConnect 2024 participation certificate</a><p>Unity Basics Bootcamp Competition. Participation only. Not an award.</p></li>
+    <li class="card"><span class="what">Slides</span><a href="proof/lecture-slides.pptx">Lecture slides</a><p>17 slides. Presenter Usama Bin Imran. Mohammad Rohaan is named as workshop participant, not as the author.</p></li>
+  </ul>
+  <div class="proof-grid">
+    <figure class="shot">
+      <img src="proof/photos/workshop-dsc07283.jpg" width="2000" height="1333" alt="Two people holding a workshop participation certificate in a classroom. A computer screen is behind them.">
+      <figcaption>Workshop photo 1. Two people holding a participation certificate in a classroom. A computer screen is behind them.</figcaption>
+    </figure>
+    <figure class="shot">
+      <img src="proof/photos/workshop-img5587.jpg" width="2000" height="1333" alt="Workshop photo 2">
+      <figcaption>Workshop photo 2.</figcaption>
+    </figure>
+  </div>
+  <figure class="shot">
+    <video controls preload="metadata">
+      <source src="proof/video/unity-workshop.mp4" type="video/mp4">
+      <a href="proof/video/unity-workshop.mp4">Workshop recording</a>
+    </video>
+    <figcaption>Workshop recording. <a href="proof/video/unity-workshop.mp4" download>Download the workshop recording</a>. Playback was not checked from this page.</figcaption>
+  </figure>
+</section>
+<nav class="toc" id="contents" aria-label="On this page">
+  <h2>On this page</h2>
+  <ol>
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#workshop-versus-extension">Workshop evidence and extensions</a></li>
+    <li><a href="#concept-demo">Browser concept illustration</a></li>
+    <li><a href="#outcomes">Learning outcomes</a></li>
+    <li><a href="#architecture">Architecture</a></li>
+    <li><a href="#proof">Workshop proof</a></li>
+    <li><a href="#find">Search</a></li>
+  </ol>
+</nav>
+<section id="overview">
+  <h2>Overview</h2>
+  <p>The Editor version in the workshop project was <strong>6000.0.26f1</strong> (<code>ccb7c73d2c02</code>). The handwritten gameplay is <code>CharacterController.cs</code> and <code>NewMonoBehaviourScript.cs</code>. Both read <code>Input.GetAxis</code> and write <code>transform.position</code>. <code>Unity Learning.txt</code> covers Awake, Start, Update, LateUpdate, FixedUpdate, render pipelines, and Rift versus Quest. Several of those sentences do not match Unity's behaviour. The learning pages quote them and then correct them.</p>
+  <p><code>SampleScene</code> is the template camera and light. The small <code>vrscene</code> (39,578 bytes) is an XR sandbox. A later file, <code>VRScene-imported.unity</code> (3,541,156 bytes, a different GUID), is the city layout: wall segments, gates, terrain, Starter Assets player prefabs, and a disabled copy of the movement script on a character mesh that is not in this tree. Both files are under <a href="workshop-evidence/README.md">workshop-evidence</a>, outside <code>Assets</code>. This project does not play them.</p>
+  <p>Courtyard Walk is the runnable scene. It is a walled yard of cubes, a capsule, five spheres, and a red pad. The same ground rules are drawn on this page in JavaScript so they can be read without the Editor. That canvas is not a Unity build.</p>
+</section>
+<section id="workshop-versus-extension">
+  <h2>Workshop evidence and what was added</h2>
+  <div class="split">
+    <article class="card">
+      <h3>In the workshop record</h3>
+      <ul>
+        <li>Editor 6000.0.26f1 and a URP 17.0.3 package list.</li>
+        <li><code>CharacterController.cs</code> and <code>NewMonoBehaviourScript.cs</code>, both with the <code>&gt; -2</code> axis test.</li>
+        <li><code>Unity Learning.txt</code> and the link note, including unofficial download URLs that this tree redacts.</li>
+        <li>Sample scene, <code>vrscene</code> with a teleport anchor and an XR Interaction Manager, Windows and Android build profiles.</li>
+        <li>Starter Assets, Mixamo-style characters credited to K. Atienza, a second character mesh, and a project archive that contains the Polylised Medieval Desert City.</li>
+        <li>A committed Windows player and the session slides and video.</li>
+      </ul>
+    </article>
+    <article class="card">
+      <h3>Added for this portfolio</h3>
+      <ul>
+        <li><code>Walker</code>, session, HUD, follow camera, and primitive builder.</li>
+        <li><code>Assets/Scenes/CourtyardWalk.unity</code> plus the menu <code>Workshop/Build Courtyard Walk Scene</code>.</li>
+        <li>Built-in render pipeline and Input Manager only, so the demo does not need the imported packages.</li>
+        <li>Corrected notes, redacted link file, provenance, and this website.</li>
+        <li>Browser concept illustration using the same yard measurements.</li>
+        <li><code>node tests/courtyard_sim.test.js</code> and <code>python tools/validate_portfolio.py</code>.</li>
+      </ul>
+    </article>
+  </div>
+  <p>The workshop did not ship a scored collectible game. Saying the courtyard has orbs and a reset pad is a description of the extension, not of the original scene.</p>
+</section>
+<section id="concept-demo">
+  <h2>Browser concept illustration</h2>
+  <p class="banner">This canvas is JavaScript. It is not a Unity player and it is not a WebGL build. There is no <code>Build</code> folder and no launch button for one.</p>
+  <div class="demo-layout">
+    <div>
+      <p id="demo-status" role="status">Loading the yard.</p>
+      <canvas id="demo-canvas" tabindex="0" aria-label="Top-down courtyard. Teal disc is the walker, gold discs are orbs, red rectangle is the reset pad. Not a Unity view."></canvas>
+    </div>
+    <div>
+      <p>WASD or arrow keys move. R restarts. The pad returns you to the start and keeps orbs. Restart puts the orbs back.</p>
+      <div class="dpad" role="group" aria-label="Touch movement">
+        <button type="button" data-stick="0,1" aria-label="North">↑</button>
+        <button type="button" data-stick="-1,0" aria-label="West">←</button>
+        <button type="button" data-stick="1,0" aria-label="East">→</button>
+        <button type="button" data-stick="0,-1" aria-label="South">↓</button>
+      </div>
+      <button type="button" class="text-button" id="demo-restart">Restart walk</button>
+      <p>Gravity and the follow camera exist only in the Unity scripts. This drawing is the ground plane.</p>
+    </div>
+  </div>
+</section>
+<section id="outcomes">
+  <h2>Learning outcomes that the files support</h2>
+  <ul>
+    <li>I can point at <code>Awake</code> on the bootstrap, <code>Update</code> on the walker, and <code>LateUpdate</code> on the camera, and I can say why <code>FixedUpdate</code> is absent. Evidence: <a href="learning/player-loop.html">player loop</a>.</li>
+    <li>I can show the original axis test and explain why it does not gate movement. Evidence: <a href="learning/movement.html">movement</a>.</li>
+    <li>I can explain why <code>transform.position</code> walks through walls and <code>CharacterController.Move</code> does not. Evidence: <a href="learning/collision-collectibles-reset.html">collision</a>.</li>
+    <li>I can name built-in, URP, HDRP, and the Scriptable Render Pipeline without calling URP a low-quality mode. Evidence: <a href="learning/render-pipelines.html">pipelines</a>. The workshop project used URP. This demo uses built-in on purpose.</li>
+    <li>I can describe the Rift and Quest notes without claiming I shipped a VR game. Evidence: <a href="learning/xr-context.html">XR context</a>.</li>
+  </ul>
+</section>
+<section id="architecture">
+  <h2>Architecture</h2>
+  <ol>
+    <li><code>CourtyardWalk.unity</code> contains the directional light, the main camera, and one <code>CourtyardBootstrap</code>.</li>
+    <li>On Play, <code>Awake</code> looks for <code>CourtyardRoot</code>. If it is missing, <code>CourtyardBuild.Create</code> builds the yard.</li>
+    <li>The builder parents a ground cube, four wall cubes, four obstacle cubes, one cylinder, five trigger spheres, a trigger pad, and a capsule.</li>
+    <li>The capsule's primitive collider is removed and a <code>CharacterController</code> plus <code>Walker</code> are added. <code>Walker</code> is not named <code>CharacterController</code>, so it does not hide the engine type.</li>
+    <li><code>CourtyardSession</code> counts orbs and handles R. <code>CourtyardHud</code> draws IMGUI text. <code>FollowCamera</code> runs in <code>LateUpdate</code>.</li>
+    <li>The editor menu <code>Workshop/Build Courtyard Walk Scene</code> calls the same <code>Create</code> and saves the scene. Play does not need that menu.</li>
+  </ol>
+  <p>Numbers shared with the canvas live in <code>CourtyardLayout</code>: half-extent 12, wall thickness 0.5, player radius 0.5, speed 5, five orb positions, four blocks, one column, and the pad at (8, 0.75, -8).</p>
+</section>
+
+<section id="find">
+  <h2>Find a note or a script</h2>
+  <form class="search-panel" role="search" onsubmit="return false">
+    <label for="search">Search notes, source, and project pages</label>
+    <input id="search" type="search" name="q" placeholder="Try collision, LateUpdate, or Walker" autocomplete="off">
+    <div class="chips" role="group" aria-label="Filter by kind"><button type="button" class="chip" data-kind="All" aria-pressed="true">All</button><button type="button" class="chip" data-kind="Learning" aria-pressed="false">Learning</button><button type="button" class="chip" data-kind="Source" aria-pressed="false">Source</button><button type="button" class="chip" data-kind="Project" aria-pressed="false">Project</button><button type="button" class="chip" data-kind="Notes" aria-pressed="false">Notes</button></div>
+  </form>
+  <ul class="result-list" id="search-results"></ul>
+</section>
+
+<p><a href="screenshots/index.html">Thirty site screenshots</a> are explained in the README and repeated on the screenshots page. They show this website. They are not views from the Unity Editor.</p>
+
+</main>
+<footer class="site-footer" id="colophon">
+  <div class="wrap">
+    <p><strong>Mohammad Rohaan</strong> · BS Computer Science, FAST-NUCES · <a href="https://github.com/rohaan2802">github.com/rohaan2802</a></p>
+    <p>Roll 22I-2327, as already printed on the previous workshop README. Courtyard Walk and these notes are the portfolio. Third-party workshop files are not in this tree. The planned Pages site is not live yet.</p>
+  </div>
+</footer>
+<a class="back-top" id="back-to-top" href="#content" aria-label="Back to top" aria-hidden="true" tabindex="-1">Top</a>
+<script src="js/concept-demo.js"></script>
+<script src="js/site.js"></script>
+</body>
+</html>

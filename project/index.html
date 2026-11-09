@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project setup</title>
+<meta name="description" content="Unity 6 workshop portfolio by Mohammad Rohaan. Courtyard Walk is an original primitive demo. The canvas on the home page is a JavaScript concept illustration, not a Unity WebGL build.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../css/site.css">
+<script>
+(function () {
+  try {
+    var q = new URLSearchParams(location.search).get("theme");
+    var saved = localStorage.getItem("courtyard-theme");
+    var theme = q || saved || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    if (theme !== "light" && theme !== "dark") theme = "light";
+    document.documentElement.setAttribute("data-theme", theme);
+  } catch (e) {
+    document.documentElement.setAttribute("data-theme", "light");
+  }
+})();
+</script>
+</head>
+<body data-root="../">
+<a class="skip" href="#content">Skip to content</a>
+<header class="site-header">
+  <div class="wrap header-bar">
+    <a class="brand" href="../index.html"><strong>Unity Work Shop</strong><span>Mohammad Rohaan</span></a>
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <button type="button" class="theme-toggle" id="theme-toggle" aria-pressed="false">Dark theme</button>
+  </div>
+  <div class="wrap">
+    <nav class="site-nav" id="site-nav" aria-label="Primary"><a href="../index.html">Home</a><a href="../learning/index.html">Learning</a><a href="../source/index.html">Source</a><a href="../project/index.html" aria-current="page">Project</a><a href="../provenance/index.html">Provenance</a><a href="../screenshots/index.html">Screenshots</a></nav>
+  </div>
+</header>
+<main id="content" class="wrap">
+
+<h1>Open, play, and build</h1>
+<section id="setup">
+  <h2>Setup</h2>
+  <p>Courtyard Walk is source for the Unity Editor. The <code>.cs</code> files do not start a game by themselves, and this website is not the Unity player. A check of this environment found no Unity Editor binary and no Unity license file, so import, Play, and build were not run.</p>
+  <p>To play it you need a 64-bit desktop that Unity Hub supports, with Editor <strong>6000.0.26f1</strong> installed and a normal Unity license. The scene uses primitive meshes, one directional light, and the built-in render pipeline. It does not need a headset, a high-end GPU, or Starter Assets. A player you build later also needs that Editor (or a player you already built on such a machine). This folder does not contain a player.</p>
+  <ol>
+    <li>Install Unity Hub and Editor <strong>6000.0.26f1</strong> (revision <code>ccb7c73d2c02</code>). A nearby 6000.0 patch may open the project and then ask to change the version. That change is yours to accept or refuse.</li>
+    <li>Add the folder that contains <code>Assets</code>, <code>Packages</code>, and <code>ProjectSettings</code>. Do not add a nested copy of an old workshop folder.</li>
+    <li>Let the Editor create <code>Library</code>. That folder is generated. It is gitignored.</li>
+    <li>Open <code>Assets/Scenes/CourtyardWalk.unity</code>.</li>
+    <li>Confirm Player Settings, Active Input Handling, is <strong>Input Manager (Old)</strong>. The project file already sets <code>activeInputHandler: 0</code>.</li>
+    <li>Press Play. <code>CourtyardBootstrap</code> builds the yard. WASD or the arrows walk. R restarts.</li>
+  </ol>
+  <p>Optional: menu <code>Workshop/Build Courtyard Walk Scene</code> writes the primitives into the scene so they show in the Hierarchy before Play. Play already works without it.</p>
+  <p>The manifest lists only built-in modules. If the Editor offers to add URP, the Input System, Cinemachine, or XR, the courtyard does not need them. Adding them will not by itself recreate Starter Assets.</p>
+</section>
+<section id="controls">
+  <h2>Controls</h2>
+  <ul>
+    <li>A D and arrows left right: Horizontal.</li>
+    <li>W S and arrows up down: Vertical. Up is positive Z, into the yard from the southern spawn.</li>
+    <li>Walls and blocks block movement. Orbs are triggers. The red pad returns the walker to the spawn and keeps the score.</li>
+    <li>R restarts the walk and restores orbs.</li>
+  </ul>
+</section>
+<section id="build">
+  <h2>Player build</h2>
+  <p>File, Build Profiles, choose the desktop target, and build to a folder outside this tree. <code>EditorBuildSettings</code> enables only <code>CourtyardWalk.unity</code>. No player, no <code>Build</code> directory, and no WebGL files are included. Do not add a website button that points at a build that is not there.</p>
+  <p>The old repository contained <code>builds/workshop.exe</code>. That player was the workshop upload, with Starter Assets and XR plugins inside it. It is not part of this tree and it is not required to read or to rebuild Courtyard Walk.</p>
+</section>
+
+<section id="find">
+  <h2>Find a note or a script</h2>
+  <form class="search-panel" role="search" onsubmit="return false">
+    <label for="search">Search notes, source, and project pages</label>
+    <input id="search" type="search" name="q" placeholder="Try collision, LateUpdate, or Walker" autocomplete="off">
+    <div class="chips" role="group" aria-label="Filter by kind"><button type="button" class="chip" data-kind="All" aria-pressed="true">All</button><button type="button" class="chip" data-kind="Learning" aria-pressed="false">Learning</button><button type="button" class="chip" data-kind="Source" aria-pressed="false">Source</button><button type="button" class="chip" data-kind="Project" aria-pressed="false">Project</button><button type="button" class="chip" data-kind="Notes" aria-pressed="false">Notes</button></div>
+  </form>
+  <ul class="result-list" id="search-results"></ul>
+</section>
+
+</main>
+<footer class="site-footer" id="colophon">
+  <div class="wrap">
+    <p><strong>Mohammad Rohaan</strong> · BS Computer Science, FAST-NUCES · <a href="https://github.com/rohaan2802">github.com/rohaan2802</a></p>
+    <p>Roll 22I-2327, as already printed on the previous workshop README. Courtyard Walk and these notes are the portfolio. Third-party workshop files are not in this tree. The planned Pages site is not live yet.</p>
+  </div>
+</footer>
+<a class="back-top" id="back-to-top" href="#content" aria-label="Back to top" aria-hidden="true" tabindex="-1">Top</a>
+<script src="../js/site.js"></script>
+</body>
+</html>

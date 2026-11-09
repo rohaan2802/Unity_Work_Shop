@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source</title>
+<meta name="description" content="Unity 6 workshop portfolio by Mohammad Rohaan. Courtyard Walk is an original primitive demo. The canvas on the home page is a JavaScript concept illustration, not a Unity WebGL build.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../css/site.css">
+<script>
+(function () {
+  try {
+    var q = new URLSearchParams(location.search).get("theme");
+    var saved = localStorage.getItem("courtyard-theme");
+    var theme = q || saved || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    if (theme !== "light" && theme !== "dark") theme = "light";
+    document.documentElement.setAttribute("data-theme", theme);
+  } catch (e) {
+    document.documentElement.setAttribute("data-theme", "light");
+  }
+})();
+</script>
+</head>
+<body data-root="../">
+<a class="skip" href="#content">Skip to content</a>
+<header class="site-header">
+  <div class="wrap header-bar">
+    <a class="brand" href="../index.html"><strong>Unity Work Shop</strong><span>Mohammad Rohaan</span></a>
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <button type="button" class="theme-toggle" id="theme-toggle" aria-pressed="false">Dark theme</button>
+  </div>
+  <div class="wrap">
+    <nav class="site-nav" id="site-nav" aria-label="Primary"><a href="../index.html">Home</a><a href="../learning/index.html">Learning</a><a href="../source/index.html" aria-current="page">Source</a><a href="../project/index.html">Project</a><a href="../provenance/index.html">Provenance</a><a href="../screenshots/index.html">Screenshots</a></nav>
+  </div>
+</header>
+<main id="content" class="wrap">
+<h1>Source</h1><p>Original workshop scripts are unchanged. The courtyard scripts are the portfolio extension. Copy copies the visible text.</p>
+<section id="original-root"><h2>Original root script</h2><p><a href="../notes/movement/CharacterController.cs"><code>notes/movement/CharacterController.cs</code></a> <button type="button" class="copy" data-copy="src-root">Copy</button></p><pre id="src-root"><code>using UnityEngine;
+
+public class CharacterController : MonoBehaviour
+{
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetAxis(&quot;Horizontal&quot;)&gt;-2)
+        {
+            transform.position += new Vector3(Input.GetAxis(&quot;Horizontal&quot;) * Time.deltaTime, 0, 0);
+        }
+
+        if (Input.GetAxis(&quot;Vertical&quot;) &gt; -2)
+        {
+            transform.position += new Vector3(0, 0, Input.GetAxis(&quot;Vertical&quot;) * Time.deltaTime);
+        }
+    }
+}
+</code></pre></section>
+<section id="original-asset"><h2>Original asset script</h2><p><a href="../notes/movement/NewMonoBehaviourScript.cs"><code>notes/movement/NewMonoBehaviourScript.cs</code></a> <button type="button" class="copy" data-copy="src-asset">Copy</button></p><pre id="src-asset"><code>using UnityEngine;
+
+public class NewMonoBehaviourScript : MonoBehaviour
+{
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if(Input.GetAxis(&quot;Horizontal&quot;)&gt;-2)
+        {
+            transform.position = transform.position + new Vector3(Input.GetAxis(&quot;Horizontal&quot;) * Time.deltaTime, 0, 0);
+
+        }
+        
+        if(Input.GetAxis(&quot;Vertical&quot;)&gt;-2)
+        {
+            transform.position = transform.position + new Vector3(0,0,Input.GetAxis(&quot;Vertical&quot;) * Time.deltaTime);
+
+        }
+    }
+}
+</code></pre></section>
+<section id="walker"><h2>Walker</h2><p><a href="../Assets/Scripts/Courtyard/Walker.cs"><code>Assets/Scripts/Courtyard/Walker.cs</code></a> <button type="button" class="copy" data-copy="src-walker">Copy</button></p><pre id="src-walker"><code>using UnityEngine;
+
+/// &lt;summary&gt;
+/// Walks with the legacy Input Manager. The workshop scripts named a class
+/// CharacterController and moved by writing transform.position whenever the
+/// axis was greater than -2. That test is true for every real axis value, and
+/// writing the position ignores colliders. This component uses the engine
+/// CharacterController and the axis value itself.
+/// &lt;/summary&gt;
+[RequireComponent(typeof(CharacterController))]
+public class Walker : MonoBehaviour
+{
+    public float speed = CourtyardLayout.MoveSpeed;
+    public float gravity = CourtyardLayout.Gravity;
+    public Vector3 spawn = CourtyardLayout.Spawn;
+
+    CharacterController body;
+    float verticalVelocity;
+    bool returnPending;
+
+    void Awake()
+    {
+        body = GetComponent&lt;CharacterController&gt;();
+    }
+
+    void Update()
+    {
+        if (returnPending)
+        {
+            returnPending = false;
+            ApplySpawn();
+        }
+
+        float horizontal = Input.GetAxis(&quot;Horizontal&quot;);
+        float vertical = Input.GetAxis(&quot;Vertical&quot;);
+        Vector3 wish = new Vector3(horizontal, 0f, vertical);
+        if (wish.sqrMagnitude &gt; 1f)
+        {
+            wish.Normalize();
+        }
+
+        if (body.isGrounded &amp;&amp; verticalVelocity &lt; 0f)
+        {
+            verticalVelocity = -1f;
+        }
+
+        verticalVelocity += gravity * Time.deltaTime;
+
+        Vector3 motion = wish * speed;
+        motion.y = verticalVelocity;
+        body.Move(motion * Time.deltaTime);
+
+        // Trigger messages arrive inside Move. The pad only sets a flag.
+        // Teleporting here is after Move has returned.
+        if (returnPending || transform.position.y &lt; -4f)
+        {
+            returnPending = false;
+            ApplySpawn();
+            return;
+        }
+
+        if (wish.sqrMagnitude &gt; 0.0001f)
+        {
+            Quaternion face = Quaternion.LookRotation(wish, Vector3.up);
+            float turn = 1f - Mathf.Exp(-10f * Time.deltaTime);
+            transform.rotation = Quaternion.Slerp(transform.rotation, face, turn);
+        }
+    }
+
+    /// &lt;summary&gt;
+    /// Used by the reset pad. Safe to call from OnTriggerEnter because the
+    /// actual teleport waits until Move has returned.
+    /// &lt;/summary&gt;
+    public void RequestSpawnReturn()
+    {
+        returnPending = true;
+    }
+
+    /// &lt;summary&gt;
+    /// Used by the R-key restart, which runs from Update and is not inside Move.
+    /// &lt;/summary&gt;
+    public void ApplySpawn()
+    {
+        if (body == null)
+        {
+            body = GetComponent&lt;CharacterController&gt;();
+        }
+
+        body.enabled = false;
+        transform.SetPositionAndRotation(spawn, Quaternion.identity);
+        body.enabled = true;
+        verticalVelocity = 0f;
+        returnPending = false;
+    }
+}
+</code></pre></section>
+<section id="layout"><h2>CourtyardLayout</h2><p><a href="../Assets/Scripts/Courtyard/CourtyardLayout.cs"><code>Assets/Scripts/Courtyard/CourtyardLayout.cs</code></a> <button type="button" class="copy" data-copy="src-layout">Copy</button></p><pre id="src-layout"><code>using UnityEngine;
+
+/// &lt;summary&gt;
+/// Shared sizes for Courtyard Walk. The browser concept illustration copies these
+/// numbers so the ground-plane rules match. It is not a Unity build.
+/// &lt;/summary&gt;
+public static class CourtyardLayout
+{
+    public const float ArenaHalf = 12f;
+    public const float WallThickness = 0.5f;
+    public const float PlayerRadius = 0.5f;
+    public const float MoveSpeed = 5f;
+    public const float Gravity = -20f;
+    public const float OrbRadius = 0.45f;
+    public const float ColumnRadius = 0.6f;
+
+    public static readonly Vector3 Spawn = new Vector3(0f, 1f, -8f);
+    public static readonly Vector3 PadCenter = new Vector3(8f, 0.75f, -8f);
+    public static readonly Vector3 PadScale = new Vector3(2.4f, 1.5f, 2.4f);
+    public static readonly Vector3 ColumnCenter = new Vector3(3f, 1f, -4f);
+
+    public static readonly Vector3[] Orbs =
+    {
+        new Vector3(-8f, 0.7f, -6f),
+        new Vector3(8f, 0.7f, -4f),
+        new Vector3(7f, 0.7f, 7f),
+        new Vector3(-9f, 0.7f, 1f),
+        new Vector3(1.5f, 0.7f, 0.5f)
+    };
+
+    public static readonly Vector3[] Blocks =
+    {
+        new Vector3(4f, 1f, 2f),
+        new Vector3(-5f, 1f, 5f),
+        new Vector3(-1f, 1f, 8f),
+        new Vector3(-3.2f, 0.5f, -2f)
+    };
+
+    public static readonly Vector3[] BlockScales =
+    {
+        new Vector3(2f, 2f, 2f),
+        new Vector3(3f, 2f, 1.6f),
+        new Vector3(2f, 2f, 2f),
+        new Vector3(2.2f, 1f, 2.2f)
+    };
+}
+</code></pre></section>
+<section id="build"><h2>CourtyardBuild</h2><p><a href="../Assets/Scripts/Courtyard/CourtyardBuild.cs"><code>Assets/Scripts/Courtyard/CourtyardBuild.cs</code></a> <button type="button" class="copy" data-copy="src-build">Copy</button></p><pre id="src-build"><code>using System.Collections.Generic;
+using UnityEngine;
+
+/// &lt;summary&gt;
+/// Builds the courtyard from primitives. Play mode and the editor menu both call Create.
+/// &lt;/summary&gt;
+public static class CourtyardBuild
+{
+    public static GameObject Create()
+    {
+        GameObject root = new GameObject(&quot;CourtyardRoot&quot;);
+        CourtyardSession session = root.AddComponent&lt;CourtyardSession&gt;();
+        CourtyardHud hud = root.AddComponent&lt;CourtyardHud&gt;();
+        hud.session = session;
+
+        CreateGround(root.transform);
+        CreateWalls(root.transform);
+        CreateBlocks(root.transform);
+        CreateColumn(root.transform);
+        List&lt;GameObject&gt; orbs = CreateOrbs(root.transform, session);
+        CreatePad(root.transform, session);
+        Walker walker = CreateWalker(root.transform);
+        session.Configure(walker, orbs);
+        AttachCamera(walker.transform);
+        TuneLight();
+        return root;
+    }
+
+    static void CreateGround(Transform parent)
+    {
+        GameObject ground = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        ground.name = &quot;Ground&quot;;
+        ground.transform.SetParent(parent, false);
+        float span = CourtyardLayout.ArenaHalf * 2f + 1f;
+        ground.transform.position = new Vector3(0f, -0.5f, 0f);
+        ground.transform.localScale = new Vector3(span, 1f, span);
+        Paint(ground, new Color(0.76f, 0.66f, 0.48f));
+    }
+
+    static void CreateWalls(Transform parent)
+    {
+        float edge = CourtyardLayout.ArenaHalf;
+        float span = CourtyardLayout.ArenaHalf * 2f;
+        float thick = CourtyardLayout.WallThickness;
+        float height = 2.2f;
+        float y = height * 0.5f;
+        Wall(parent, &quot;Wall North&quot;, new Vector3(0f, y, edge), new Vector3(span, height, thick));
+        Wall(parent, &quot;Wall South&quot;, new Vector3(0f, y, -edge), new Vector3(span, height, thick));
+        Wall(parent, &quot;Wall East&quot;, new Vector3(edge, y, 0f), new Vector3(thick, height, span));
+        Wall(parent, &quot;Wall West&quot;, new Vector3(-edge, y, 0f), new Vector3(thick, height, span));
+    }
+
+    static void Wall(Transform parent, string name, Vector3 position, Vector3 scale)
+    {
+        GameObject wall = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        wall.name = name;
+        wall.transform.SetParent(parent, false);
+        wall.transform.position = position;
+        wall.transform.localScale = scale;
+        Paint(wall, new Color(0.45f, 0.38f, 0.32f));
+    }
+
+    static void CreateBlocks(Transform parent)
+    {
+        for (int i = 0; i &lt; CourtyardLayout.Blocks.Length; i++)
+        {
+            GameObject block = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            block.name = &quot;Block &quot; + (i + 1);
+            block.transform.SetParent(parent, false);
+            block.transform.position = CourtyardLayout.Blocks[i];
+            block.transform.localScale = CourtyardLayout.BlockScales[i];
+            Paint(block, new Color(0.55f, 0.47f, 0.39f));
+        }
+    }
+
+    static void CreateColumn(Transform parent)
+    {
+        GameObject column = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+        column.name = &quot;Column&quot;;
+        column.transform.SetParent(parent, false);
+        column.transform.position = CourtyardLayout.ColumnCenter;
+        column.transform.localScale = new Vector3(CourtyardLayout.ColumnRadius * 2f, 1f, CourtyardLayout.ColumnRadius * 2f);
+        Paint(column, new Color(0.63f, 0.56f, 0.47f));
+    }
+
+    static List&lt;GameObject&gt; CreateOrbs(Transform parent, CourtyardSession session)
+    {
+        List&lt;GameObject&gt; list = new List&lt;GameObject&gt;();
+        for (int i = 0; i &lt; CourtyardLayout.Orbs.Length; i++)
+        {
+            GameObject orb = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            orb.name = &quot;Orb &quot; + (i + 1);
+            orb.transform.SetParent(parent, false);
+            orb.transform.position = CourtyardLayout.Orbs[i];
+            orb.transform.localScale = Vector3.one * (CourtyardLayout.OrbRadius * 2f);
+            SphereCollider collider = orb.GetComponent&lt;SphereCollider&gt;();
+            collider.isTrigger = true;
+            Rigidbody body = orb.AddComponent&lt;Rigidbody&gt;();
+            body.isKinematic = true;
+            body.useGravity = false;
+            orb.AddComponent&lt;CollectibleOrb&gt;().Bind(session);
+            Paint(orb, new Color(0.93f, 0.76f, 0.28f));
+            list.Add(orb);
+        }
+
+        return list;
+    }
+
+    static void CreatePad(Transform parent, CourtyardSession session)
+    {
+        GameObject pad = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        pad.name = &quot;Reset Pad&quot;;
+        pad.transform.SetParent(parent, false);
+        pad.transform.position = CourtyardLayout.PadCenter;
+        pad.transform.localScale = CourtyardLayout.PadScale;
+        BoxCollider collider = pad.GetComponent&lt;BoxCollider&gt;();
+        collider.isTrigger = true;
+        Rigidbody body = pad.AddComponent&lt;Rigidbody&gt;();
+        body.isKinematic = true;
+        body.useGravity = false;
+        pad.AddComponent&lt;ResetPad&gt;().Bind(session);
+        Paint(pad, new Color(0.72f, 0.22f, 0.18f));
+    }
+
+    static Walker CreateWalker(Transform parent)
+    {
+        GameObject player = GameObject.CreatePrimitive(PrimitiveType.Capsule);
+        player.name = &quot;Walker&quot;;
+        player.transform.SetParent(parent, false);
+        player.transform.position = CourtyardLayout.Spawn;
+        // The primitive brings its own capsule collider. Destroy it immediately.
+        // Waiting until end of frame would leave two colliders on the walker.
+        CapsuleCollider primitiveCollider = player.GetComponent&lt;CapsuleCollider&gt;();
+        if (primitiveCollider != null)
+        {
+            Object.DestroyImmediate(primitiveCollider);
+        }
+        CharacterController controller = player.AddComponent&lt;CharacterController&gt;();
+        controller.height = 2f;
+        controller.radius = CourtyardLayout.PlayerRadius;
+        controller.center = Vector3.zero;
+        controller.stepOffset = 0.3f;
+        Paint(player, new Color(0.1f, 0.42f, 0.44f));
+        return player.AddComponent&lt;Walker&gt;();
+    }
+
+    static void AttachCamera(Transform target)
+    {
+        Camera camera = Camera.main;
+        if (camera == null)
+        {
+            GameObject cameraObject = new GameObject(&quot;Main Camera&quot;);
+            cameraObject.tag = &quot;MainCamera&quot;;
+            camera = cameraObject.AddComponent&lt;Camera&gt;();
+            cameraObject.AddComponent&lt;AudioListener&gt;();
+        }
+
+        camera.clearFlags = CameraClearFlags.SolidColor;
+        camera.backgroundColor = new Color(0.62f, 0.74f, 0.82f);
+        FollowCamera follow = camera.GetComponent&lt;FollowCamera&gt;();
+        if (follow == null)
+        {
+            follow = camera.gameObject.AddComponent&lt;FollowCamera&gt;();
+        }
+
+        follow.target = target;
+        camera.transform.position = target.position + follow.offset;
+        camera.transform.LookAt(target.position + Vector3.up * 1.2f);
+    }
+
+    static void TuneLight()
+    {
+        Light sun = Object.FindAnyObjectByType&lt;Light&gt;();
+        if (sun == null)
+        {
+            GameObject lightObject = new GameObject(&quot;Directional Light&quot;);
+            sun = lightObject.AddComponent&lt;Light&gt;();
+            sun.type = LightType.Directional;
+            lightObject.transform.rotation = Quaternion.Euler(50f, -30f, 0f);
+        }
+
+        sun.color = new Color(1f, 0.95f, 0.84f);
+        sun.intensity = 1.15f;
+        sun.shadows = LightShadows.Soft;
+    }
+
+    static void Paint(GameObject target, Color color)
+    {
+        Renderer renderer = target.GetComponent&lt;Renderer&gt;();
+        if (renderer == null)
+        {
+            return;
+        }
+
+        Material material = renderer.material;
+        if (material.HasProperty(&quot;_Color&quot;))
+        {
+            material.color = color;
+        }
+
+        if (material.HasProperty(&quot;_BaseColor&quot;))
+        {
+            material.SetColor(&quot;_BaseColor&quot;, color);
+        }
+    }
+
+}
+</code></pre></section>
+<section id="session"><h2>CourtyardSession</h2><p><a href="../Assets/Scripts/Courtyard/CourtyardSession.cs"><code>Assets/Scripts/Courtyard/CourtyardSession.cs</code></a> <button type="button" class="copy" data-copy="src-session">Copy</button></p><pre id="src-session"><code>using System.Collections.Generic;
+using UnityEngine;
+
+/// &lt;summary&gt;
+/// Score and restart state for one walk of the courtyard.
+/// &lt;/summary&gt;
+public class CourtyardSession : MonoBehaviour
+{
+    public int collected;
+    public int total;
+    public string status = &quot;Walk the courtyard and touch every orb.&quot;;
+    public bool cleared;
+
+    readonly List&lt;GameObject&gt; orbs = new List&lt;GameObject&gt;();
+    Walker walker;
+
+    public void Configure(Walker player, List&lt;GameObject&gt; orbObjects)
+    {
+        walker = player;
+        orbs.Clear();
+        orbs.AddRange(orbObjects);
+        total = orbs.Count;
+        collected = 0;
+        cleared = false;
+        status = &quot;Walk the courtyard and touch every orb.&quot;;
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Restart();
+        }
+    }
+
+    public void RegisterCollection()
+    {
+        collected = Mathf.Clamp(collected + 1, 0, total);
+        if (total &gt; 0 &amp;&amp; collected &gt;= total)
+        {
+            cleared = true;
+            status = &quot;Courtyard clear. Press R to walk it again.&quot;;
+        }
+        else
+        {
+            status = &quot;Orb collected.&quot;;
+        }
+    }
+
+    public void NotifyPad(Walker who)
+    {
+        who.RequestSpawnReturn();
+        if (cleared)
+        {
+            status = &quot;Courtyard clear. The pad only returns you to the start.&quot;;
+        }
+        else
+        {
+            status = &quot;Reset pad. Orbs you already took stay taken.&quot;;
+        }
+    }
+
+    public void Restart()
+    {
+        collected = 0;
+        cleared = false;
+        status = &quot;Restarted. The orbs are back.&quot;;
+        for (int i = 0; i &lt; orbs.Count; i++)
+        {
+            if (orbs[i] != null)
+            {
+                orbs[i].SetActive(true);
+            }
+        }
+
+        if (walker != null)
+        {
+            walker.ApplySpawn();
+        }
+    }
+}
+</code></pre></section>
+<section id="hud"><h2>CourtyardHud</h2><p><a href="../Assets/Scripts/Courtyard/CourtyardHud.cs"><code>Assets/Scripts/Courtyard/CourtyardHud.cs</code></a> <button type="button" class="copy" data-copy="src-hud">Copy</button></p><pre id="src-hud"><code>using UnityEngine;
+
+/// &lt;summary&gt;
+/// Immediate-mode HUD. It uses the built-in IMGUI module so the scene does not
+/// need a Canvas, a font asset, or TextMeshPro.
+/// &lt;/summary&gt;
+public class CourtyardHud : MonoBehaviour
+{
+    public CourtyardSession session;
+
+    void OnGUI()
+    {
+        if (session == null)
+        {
+            return;
+        }
+
+        float scale = Mathf.Max(1f, Screen.height / 900f);
+        Matrix4x4 previous = GUI.matrix;
+        GUI.matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity, new Vector3(scale, scale, 1f));
+
+        float width = Mathf.Min(540f, (Screen.width / scale) - 32f);
+        GUIStyle title = new GUIStyle(GUI.skin.label);
+        title.fontSize = 28;
+        title.fontStyle = FontStyle.Bold;
+        title.normal.textColor = Color.white;
+        title.wordWrap = true;
+
+        GUIStyle body = new GUIStyle(GUI.skin.label);
+        body.fontSize = 20;
+        body.wordWrap = true;
+        body.normal.textColor = new Color(0.97f, 0.94f, 0.88f);
+
+        Color previousColor = GUI.color;
+        GUI.color = new Color(0.11f, 0.09f, 0.08f, 0.86f);
+        GUI.Box(new Rect(16f, 16f, width, 230f), GUIContent.none);
+        GUI.color = previousColor;
+
+        float x = 32f;
+        float y = 28f;
+        GUI.Label(new Rect(x, y, width - 32f, 40f), &quot;Courtyard Walk&quot;, title);
+        y += 44f;
+        GUI.Label(new Rect(x, y, width - 32f, 32f), &quot;Orbs &quot; + session.collected + &quot; / &quot; + session.total, body);
+        y += 34f;
+        GUI.Label(new Rect(x, y, width - 32f, 72f), session.status, body);
+        y += 74f;
+        GUI.Label(new Rect(x, y, width - 32f, 64f), &quot;WASD or arrow keys. The red pad returns you to the start. R restarts.&quot;, body);
+
+        GUI.matrix = previous;
+    }
+}
+</code></pre></section>
+<section id="camera"><h2>FollowCamera</h2><p><a href="../Assets/Scripts/Courtyard/FollowCamera.cs"><code>Assets/Scripts/Courtyard/FollowCamera.cs</code></a> <button type="button" class="copy" data-copy="src-camera">Copy</button></p><pre id="src-camera"><code>using UnityEngine;
+
+/// &lt;summary&gt;
+/// Runs in LateUpdate so the camera follows the walker after Update has moved it.
+/// LateUpdate still runs every frame. It is not a one-shot timer.
+/// &lt;/summary&gt;
+public class FollowCamera : MonoBehaviour
+{
+    public Transform target;
+    public Vector3 offset = new Vector3(0f, 7.5f, -9f);
+    public float followSharpness = 6f;
+
+    void LateUpdate()
+    {
+        if (target == null)
+        {
+            return;
+        }
+
+        Vector3 desired = target.position + offset;
+        float blend = 1f - Mathf.Exp(-followSharpness * Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position, desired, blend);
+        transform.LookAt(target.position + Vector3.up * 1.2f);
+    }
+}
+</code></pre></section>
+<section id="orb"><h2>CollectibleOrb</h2><p><a href="../Assets/Scripts/Courtyard/CollectibleOrb.cs"><code>Assets/Scripts/Courtyard/CollectibleOrb.cs</code></a> <button type="button" class="copy" data-copy="src-orb">Copy</button></p><pre id="src-orb"><code>using UnityEngine;
+
+/// &lt;summary&gt;
+/// Trigger orb. A kinematic Rigidbody is required so Unity sends OnTriggerEnter
+/// when a CharacterController moves into the trigger.
+/// &lt;/summary&gt;
+public class CollectibleOrb : MonoBehaviour
+{
+    CourtyardSession session;
+
+    public void Bind(CourtyardSession owner)
+    {
+        session = owner;
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (!isActiveAndEnabled)
+        {
+            return;
+        }
+
+        Walker walker = other.GetComponent&lt;Walker&gt;();
+        if (walker == null)
+        {
+            walker = other.GetComponentInParent&lt;Walker&gt;();
+        }
+
+        if (walker == null)
+        {
+            return;
+        }
+
+        gameObject.SetActive(false);
+        if (session != null)
+        {
+            session.RegisterCollection();
+        }
+    }
+}
+</code></pre></section>
+<section id="pad"><h2>ResetPad</h2><p><a href="../Assets/Scripts/Courtyard/ResetPad.cs"><code>Assets/Scripts/Courtyard/ResetPad.cs</code></a> <button type="button" class="copy" data-copy="src-pad">Copy</button></p><pre id="src-pad"><code>using UnityEngine;
+
+/// &lt;summary&gt;
+/// Returns the walker to the spawn point. Collected orbs stay collected.
+/// The R key, handled by CourtyardSession, is the full restart.
+/// &lt;/summary&gt;
+public class ResetPad : MonoBehaviour
+{
+    CourtyardSession session;
+
+    public void Bind(CourtyardSession owner)
+    {
+        session = owner;
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        Walker walker = other.GetComponent&lt;Walker&gt;();
+        if (walker == null)
+        {
+            walker = other.GetComponentInParent&lt;Walker&gt;();
+        }
+
+        if (walker == null || session == null)
+        {
+            return;
+        }
+
+        session.NotifyPad(walker);
+    }
+}
+</code></pre></section>
+<section id="bootstrap"><h2>CourtyardBootstrap</h2><p><a href="../Assets/Scripts/Courtyard/CourtyardBootstrap.cs"><code>Assets/Scripts/Courtyard/CourtyardBootstrap.cs</code></a> <button type="button" class="copy" data-copy="src-boot">Copy</button></p><pre id="src-boot"><code>using UnityEngine;
+
+/// &lt;summary&gt;
+/// Builds Courtyard Walk on Play when the scene does not already contain it.
+/// The checked-in scene only has a light, a camera, and this component.
+/// &lt;/summary&gt;
+public class CourtyardBootstrap : MonoBehaviour
+{
+    void Awake()
+    {
+        if (GameObject.Find(&quot;CourtyardRoot&quot;) != null)
+        {
+            return;
+        }
+
+        CourtyardBuild.Create();
+    }
+}
+</code></pre></section>
+<section id="editor"><h2>Editor scene builder</h2><p><a href="../Assets/Editor/CourtyardSceneBuilder.cs"><code>Assets/Editor/CourtyardSceneBuilder.cs</code></a> <button type="button" class="copy" data-copy="src-editor">Copy</button></p><pre id="src-editor"><code>using UnityEditor;
+using UnityEditor.SceneManagement;
+using UnityEngine;
+
+/// &lt;summary&gt;
+/// Bakes the same primitives the play-mode bootstrap creates, then saves the scene.
+/// Play already works without this menu. Use it when you want the hierarchy visible
+/// before entering Play mode.
+/// &lt;/summary&gt;
+public static class CourtyardSceneBuilder
+{
+    const string ScenePath = &quot;Assets/Scenes/CourtyardWalk.unity&quot;;
+
+    [MenuItem(&quot;Workshop/Build Courtyard Walk Scene&quot;)]
+    public static void BuildAndSave()
+    {
+        EditorSceneManager.OpenScene(ScenePath, OpenSceneMode.Single);
+        GameObject existing = GameObject.Find(&quot;CourtyardRoot&quot;);
+        if (existing != null)
+        {
+            Object.DestroyImmediate(existing);
+        }
+
+        CourtyardBuild.Create();
+        EditorSceneManager.MarkSceneDirty(EditorSceneManager.GetActiveScene());
+        EditorSceneManager.SaveScene(EditorSceneManager.GetActiveScene(), ScenePath);
+        Debug.Log(&quot;Saved Courtyard Walk to &quot; + ScenePath);
+    }
+}
+</code></pre></section>
+
+<section id="find">
+  <h2>Find a note or a script</h2>
+  <form class="search-panel" role="search" onsubmit="return false">
+    <label for="search">Search notes, source, and project pages</label>
+    <input id="search" type="search" name="q" placeholder="Try collision, LateUpdate, or Walker" autocomplete="off">
+    <div class="chips" role="group" aria-label="Filter by kind"><button type="button" class="chip" data-kind="All" aria-pressed="true">All</button><button type="button" class="chip" data-kind="Learning" aria-pressed="false">Learning</button><button type="button" class="chip" data-kind="Source" aria-pressed="false">Source</button><button type="button" class="chip" data-kind="Project" aria-pressed="false">Project</button><button type="button" class="chip" data-kind="Notes" aria-pressed="false">Notes</button></div>
+  </form>
+  <ul class="result-list" id="search-results"></ul>
+</section>
+
+</main>
+<footer class="site-footer" id="colophon">
+  <div class="wrap">
+    <p><strong>Mohammad Rohaan</strong> · BS Computer Science, FAST-NUCES · <a href="https://github.com/rohaan2802">github.com/rohaan2802</a></p>
+    <p>Roll 22I-2327, as already printed on the previous workshop README. Courtyard Walk and these notes are the portfolio. Third-party workshop files are not in this tree. The planned Pages site is not live yet.</p>
+  </div>
+</footer>
+<a class="back-top" id="back-to-top" href="#content" aria-label="Back to top" aria-hidden="true" tabindex="-1">Top</a>
+<script src="../js/site.js"></script>
+</body>
+</html>

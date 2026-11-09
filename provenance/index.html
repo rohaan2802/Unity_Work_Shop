@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Provenance</title>
+<meta name="description" content="Unity 6 workshop portfolio by Mohammad Rohaan. Courtyard Walk is an original primitive demo. The canvas on the home page is a JavaScript concept illustration, not a Unity WebGL build.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../css/site.css">
+<script>
+(function () {
+  try {
+    var q = new URLSearchParams(location.search).get("theme");
+    var saved = localStorage.getItem("courtyard-theme");
+    var theme = q || saved || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    if (theme !== "light" && theme !== "dark") theme = "light";
+    document.documentElement.setAttribute("data-theme", theme);
+  } catch (e) {
+    document.documentElement.setAttribute("data-theme", "light");
+  }
+})();
+</script>
+</head>
+<body data-root="../">
+<a class="skip" href="#content">Skip to content</a>
+<header class="site-header">
+  <div class="wrap header-bar">
+    <a class="brand" href="../index.html"><strong>Unity Work Shop</strong><span>Mohammad Rohaan</span></a>
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <button type="button" class="theme-toggle" id="theme-toggle" aria-pressed="false">Dark theme</button>
+  </div>
+  <div class="wrap">
+    <nav class="site-nav" id="site-nav" aria-label="Primary"><a href="../index.html">Home</a><a href="../learning/index.html">Learning</a><a href="../source/index.html">Source</a><a href="../project/index.html">Project</a><a href="../provenance/index.html" aria-current="page">Provenance</a><a href="../screenshots/index.html">Screenshots</a></nav>
+  </div>
+</header>
+<main id="content" class="wrap">
+
+<h1>Provenance</h1>
+<p>The movement scripts, <code>Unity Learning.txt</code>, and the two scene files are workshop work. Courtyard Walk is the later scene that runs without those other files.</p>
+<section id="kept">
+  <h2>Workshop files in this tree</h2>
+  <ul>
+    <li><a href="../notes/movement/CharacterController.cs"><code>CharacterController.cs</code></a> and <a href="../notes/movement/NewMonoBehaviourScript.cs"><code>NewMonoBehaviourScript.cs</code></a>. The second file's script GUID is <code>8da2fb2bc5e016b46a58a9a76e50a30f</code>.</li>
+    <li><a href="../notes/player-loop/Unity%20Learning.txt"><code>Unity Learning.txt</code></a>, unchanged. The learning pages correct it in separate text.</li>
+    <li><a href="../workshop-evidence/scenes/SampleScene.unity"><code>SampleScene.unity</code></a> (7055 bytes, GUID <code>9fc0d4010bbf28b4594072e72b8655ab</code>) and <a href="../workshop-evidence/scenes/vrscene.unity"><code>vrscene.unity</code></a> (39578 bytes, GUID <code>3e5932c951cc1e643bbb37dd13e56fd6</code>). Read <a href="../workshop-evidence/README.md">what they reference</a> before treating either as playable.</li>
+  </ul>
+  <p>A separate template called My project has its own SampleScene of 11413 bytes. That is not the workshop scene and it is not merged into Courtyard Walk.</p>
+</section>
+<section id="excluded">
+  <h2>Referenced, not bundled into Courtyard Walk</h2>
+  <ul>
+    <li>Starter Assets. Its <code>license.txt</code> names the Unity Companion License. That names the license. It is not a conclusion that the package is cleared to post, and it is not a conclusion that it is barred.</li>
+    <li>The Ely character file credits K. Atienza. <code>Ch08_nonPBR</code> is a second character. No license file sat beside those meshes in the copy that was reviewed. <code>vrscene</code> instances both. The mesh bytes are not in this tree.</li>
+    <li>The notes name the Polylised Medieval Desert City on the Asset Store. That environment is not in <code>SampleScene</code> or <code>vrscene</code>, and it is not in Courtyard Walk.</li>
+  </ul>
+  <p>Courtyard Walk does not load those files. Restoring <code>vrscene</code> means putting this scene file back next to the prefabs it already names, not stripping the prefabs and calling the scene fixed.</p>
+</section>
+<section id="fixes">
+  <h2>Corrections</h2>
+  <p>The originals are not silently edited. The list of fixes is <a href="../docs/corrections.md">docs/corrections.md</a>.</p>
+</section>
+
+<section id="find">
+  <h2>Find a note or a script</h2>
+  <form class="search-panel" role="search" onsubmit="return false">
+    <label for="search">Search notes, source, and project pages</label>
+    <input id="search" type="search" name="q" placeholder="Try collision, LateUpdate, or Walker" autocomplete="off">
+    <div class="chips" role="group" aria-label="Filter by kind"><button type="button" class="chip" data-kind="All" aria-pressed="true">All</button><button type="button" class="chip" data-kind="Learning" aria-pressed="false">Learning</button><button type="button" class="chip" data-kind="Source" aria-pressed="false">Source</button><button type="button" class="chip" data-kind="Project" aria-pressed="false">Project</button><button type="button" class="chip" data-kind="Notes" aria-pressed="false">Notes</button></div>
+  </form>
+  <ul class="result-list" id="search-results"></ul>
+</section>
+
+</main>
+<footer class="site-footer" id="colophon">
+  <div class="wrap">
+    <p><strong>Mohammad Rohaan</strong> · BS Computer Science, FAST-NUCES · <a href="https://github.com/rohaan2802">github.com/rohaan2802</a></p>
+    <p>Roll 22I-2327, as already printed on the previous workshop README. Courtyard Walk and these notes are the portfolio. Third-party workshop files are not in this tree. The planned Pages site is not live yet.</p>
+  </div>
+</footer>
+<a class="back-top" id="back-to-top" href="#content" aria-label="Back to top" aria-hidden="true" tabindex="-1">Top</a>
+<script src="../js/site.js"></script>
+</body>
+</html>

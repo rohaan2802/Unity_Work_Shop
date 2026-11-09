@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Collision, collectibles, and reset</title>
+<meta name="description" content="Unity 6 workshop portfolio by Mohammad Rohaan. Courtyard Walk is an original primitive demo. The canvas on the home page is a JavaScript concept illustration, not a Unity WebGL build.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../css/site.css">
+<script>
+(function () {
+  try {
+    var q = new URLSearchParams(location.search).get("theme");
+    var saved = localStorage.getItem("courtyard-theme");
+    var theme = q || saved || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    if (theme !== "light" && theme !== "dark") theme = "light";
+    document.documentElement.setAttribute("data-theme", theme);
+  } catch (e) {
+    document.documentElement.setAttribute("data-theme", "light");
+  }
+})();
+</script>
+</head>
+<body data-root="../">
+<a class="skip" href="#content">Skip to content</a>
+<header class="site-header">
+  <div class="wrap header-bar">
+    <a class="brand" href="../index.html"><strong>Unity Work Shop</strong><span>Mohammad Rohaan</span></a>
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <button type="button" class="theme-toggle" id="theme-toggle" aria-pressed="false">Dark theme</button>
+  </div>
+  <div class="wrap">
+    <nav class="site-nav" id="site-nav" aria-label="Primary"><a href="../index.html">Home</a><a href="../learning/index.html">Learning</a><a href="../source/index.html">Source</a><a href="../project/index.html">Project</a><a href="../provenance/index.html">Provenance</a><a href="../screenshots/index.html">Screenshots</a></nav>
+  </div>
+</header>
+<main id="content" class="wrap">
+
+<h1>Collision, collectibles, and reset</h1>
+<section id="rules">
+  <h2>Rules the scripts implement</h2>
+  <ul>
+    <li>Writing <code>transform.position</code> teleports the object. Colliders do not stop it. <code>Walker</code> calls <code>CharacterController.Move</code>, so the wall cubes and the obstacle cubes block the capsule.</li>
+    <li>Orbs are spheres with trigger colliders and kinematic rigidbodies. Unity sends <code>OnTriggerEnter</code> when a CharacterController meets a trigger only if one side has a Rigidbody. The orb has that Rigidbody and does not use gravity.</li>
+    <li><code>CollectibleOrb</code> disables itself and tells <code>CourtyardSession</code>. At five orbs the status becomes Courtyard clear.</li>
+    <li>The red pad is also a trigger. It calls <code>ReturnToSpawn</code> and leaves the collected count alone.</li>
+    <li>R calls <code>Restart</code>: count returns to zero, orbs are activated, and the walker returns to (0, 1, -8).</li>
+    <li>If the capsule falls below y = -4, it is returned to the spawn. The ground cube should make that rare.</li>
+  </ul>
+  <p>The HUD is <code>OnGUI</code>. It does not need a Canvas, a font file, or TextMeshPro. The text scales with screen height so a 1080p game view stays readable.</p>
+  <p>The browser illustration follows the ground-plane part of these rules and says so on the page. It does not simulate gravity.</p>
+</section>
+
+<section id="find">
+  <h2>Find a note or a script</h2>
+  <form class="search-panel" role="search" onsubmit="return false">
+    <label for="search">Search notes, source, and project pages</label>
+    <input id="search" type="search" name="q" placeholder="Try collision, LateUpdate, or Walker" autocomplete="off">
+    <div class="chips" role="group" aria-label="Filter by kind"><button type="button" class="chip" data-kind="All" aria-pressed="true">All</button><button type="button" class="chip" data-kind="Learning" aria-pressed="false">Learning</button><button type="button" class="chip" data-kind="Source" aria-pressed="false">Source</button><button type="button" class="chip" data-kind="Project" aria-pressed="false">Project</button><button type="button" class="chip" data-kind="Notes" aria-pressed="false">Notes</button></div>
+  </form>
+  <ul class="result-list" id="search-results"></ul>
+</section>
+
+</main>
+<footer class="site-footer" id="colophon">
+  <div class="wrap">
+    <p><strong>Mohammad Rohaan</strong> · BS Computer Science, FAST-NUCES · <a href="https://github.com/rohaan2802">github.com/rohaan2802</a></p>
+    <p>Roll 22I-2327, as already printed on the previous workshop README. Courtyard Walk and these notes are the portfolio. Third-party workshop files are not in this tree. The planned Pages site is not live yet.</p>
+  </div>
+</footer>
+<a class="back-top" id="back-to-top" href="#content" aria-label="Back to top" aria-hidden="true" tabindex="-1">Top</a>
+<script src="../js/site.js"></script>
+</body>
+</html>

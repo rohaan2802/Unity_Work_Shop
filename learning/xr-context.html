@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>XR context</title>
+<meta name="description" content="Unity 6 workshop portfolio by Mohammad Rohaan. Courtyard Walk is an original primitive demo. The canvas on the home page is a JavaScript concept illustration, not a Unity WebGL build.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../css/site.css">
+<script>
+(function () {
+  try {
+    var q = new URLSearchParams(location.search).get("theme");
+    var saved = localStorage.getItem("courtyard-theme");
+    var theme = q || saved || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    if (theme !== "light" && theme !== "dark") theme = "light";
+    document.documentElement.setAttribute("data-theme", theme);
+  } catch (e) {
+    document.documentElement.setAttribute("data-theme", "light");
+  }
+})();
+</script>
+</head>
+<body data-root="../">
+<a class="skip" href="#content">Skip to content</a>
+<header class="site-header">
+  <div class="wrap header-bar">
+    <a class="brand" href="../index.html"><strong>Unity Work Shop</strong><span>Mohammad Rohaan</span></a>
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <button type="button" class="theme-toggle" id="theme-toggle" aria-pressed="false">Dark theme</button>
+  </div>
+  <div class="wrap">
+    <nav class="site-nav" id="site-nav" aria-label="Primary"><a href="../index.html">Home</a><a href="../learning/index.html">Learning</a><a href="../source/index.html">Source</a><a href="../project/index.html">Project</a><a href="../provenance/index.html">Provenance</a><a href="../screenshots/index.html">Screenshots</a></nav>
+  </div>
+</header>
+<main id="content" class="wrap">
+
+<h1>XR context</h1>
+<section id="what-was-there">
+  <h2>Notes and the scene that stayed local</h2>
+  <p>The learning note says an Oculus Rift has no processor of its own and uses the computer, and that Quest 2 is Android-based with its own battery and a store, and that Quest 3 has a stronger processor, more RAM, and better cameras than Quest 2. That is the workshop wording. It was not rechecked on a headset for this portfolio.</p>
+  <p>Two different scene files use similar names. <a href="../workshop-evidence/scenes/vrscene.unity"><code>vrscene.unity</code></a> is 39,578 bytes, GUID <code>3e5932c951cc1e643bbb37dd13e56fd6</code>. It names an inactive plane and camera, a light, an anchor, a teleportation anchor, and an XR Interaction Manager, and it instances the Starter Assets player, the Ely character, and the Ch08 character. The movement script on the Ely instance uses GUID <code>8da2fb2bc5e016b46a58a9a76e50a30f</code> and is saved disabled.</p>
+  <p><a href="../workshop-evidence/scenes/VRScene-imported.unity"><code>VRScene-imported.unity</code></a> is 3,541,156 bytes and a different GUID, <code>bf8efc1ea90408840a27a268a2f11032</code>. It is the city layout: terrain, vegetation, wall segments, gates, and 273 prefab GUIDs that belong to the Polylised Medieval Desert City folder. The same movement script text, under GUID <code>acbb11b919ab48e4d949ae1887a16d60</code>, is added to <code>Ch15_nonPBR.fbx</code> (115,014,208 bytes, not in this tree) and is also saved disabled. Starter Assets player prefabs are instanced. The XR Interaction Manager script is a package script, not a custom file.</p>
+  <p>Courtyard Walk does not load either scene. Copying the city file into <code>Assets</code> without the city prefabs, that character mesh, URP, and the XR package would show missing references. It would not become a playable city. The full account is <a href="../workshop-evidence/README.md">workshop-evidence</a>.</p>
+</section>
+
+<section id="find">
+  <h2>Find a note or a script</h2>
+  <form class="search-panel" role="search" onsubmit="return false">
+    <label for="search">Search notes, source, and project pages</label>
+    <input id="search" type="search" name="q" placeholder="Try collision, LateUpdate, or Walker" autocomplete="off">
+    <div class="chips" role="group" aria-label="Filter by kind"><button type="button" class="chip" data-kind="All" aria-pressed="true">All</button><button type="button" class="chip" data-kind="Learning" aria-pressed="false">Learning</button><button type="button" class="chip" data-kind="Source" aria-pressed="false">Source</button><button type="button" class="chip" data-kind="Project" aria-pressed="false">Project</button><button type="button" class="chip" data-kind="Notes" aria-pressed="false">Notes</button></div>
+  </form>
+  <ul class="result-list" id="search-results"></ul>
+</section>
+
+</main>
+<footer class="site-footer" id="colophon">
+  <div class="wrap">
+    <p><strong>Mohammad Rohaan</strong> · BS Computer Science, FAST-NUCES · <a href="https://github.com/rohaan2802">github.com/rohaan2802</a></p>
+    <p>Roll 22I-2327, as already printed on the previous workshop README. Courtyard Walk and these notes are the portfolio. Third-party workshop files are not in this tree. The planned Pages site is not live yet.</p>
+  </div>
+</footer>
+<a class="back-top" id="back-to-top" href="#content" aria-label="Back to top" aria-hidden="true" tabindex="-1">Top</a>
+<script src="../js/site.js"></script>
+</body>
+</html>

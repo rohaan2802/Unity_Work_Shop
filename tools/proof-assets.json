@@ -1,0 +1,23 @@
+{
+  "note": "These three files are installed on the public roots and are not inside the website patch zip. A local check should match path, bytes, and sha256. This workspace did not contain the bytes.",
+  "assets": [
+    {
+      "path": "proof/photos/workshop-dsc07283.jpg",
+      "bytes": 358199,
+      "sha256": "c6a8f9c653f0a17fc7532384ab1aeba40490b95d7b1ff3d17cc514e60b3cbef6",
+      "label": "Workshop photo 1. Two people holding a participation certificate in a classroom. A computer screen is behind them."
+    },
+    {
+      "path": "proof/photos/workshop-img5587.jpg",
+      "bytes": 591996,
+      "sha256": "7756216a04f1ab8003beca1095157a3e8f3a1f878c6b75f674597823f58866f4",
+      "label": "Workshop photo 2"
+    },
+    {
+      "path": "proof/video/unity-workshop.mp4",
+      "bytes": 24168913,
+      "sha256": "989c27753cc5d806d9e5aacabe7990cffaddc9eb57942a0b40c2f04e1be97f57",
+      "label": "Workshop recording"
+    }
+  ]
+}

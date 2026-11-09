@@ -1,0 +1,12 @@
+# Text files use Git's normal line-ending conversion.
+# No large-file filters: this tree has no packaged binaries, videos,
+# or third-party asset archives.
+* text=auto
+*.cs text diff=csharp
+*.unity text
+*.asset text
+*.meta text
+*.prefab text
+*.jpg binary
+*.jpeg binary
+*.svg text
