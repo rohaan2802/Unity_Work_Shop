@@ -453,6 +453,8 @@ th, td {
 .figure figcaption,
 .shot figcaption { color: var(--muted); margin-top: 0.45rem; }
 
+.proof-grid .shot figcaption { text-align: center; }
+
 .tree { white-space: pre-wrap; overflow-wrap: anywhere; }
 
 .proof-grid {

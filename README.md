@@ -244,187 +244,187 @@ The pipeline page is explicit that the workshop Editor project was URP and the p
 
 ## Screenshots
 
-Thirty captures, taken in a headed-capable Chrome session driven against the local site (headless Chrome rendering the real pages). Each file is a different page, theme, viewport, or demo state. They are not Unity Game view, not Editor screenshots, and not stock images. The Unity Editor was not installed, so no Editor screenshot is included.
+Thirty screenshots of this website: different pages, themes, and screen sizes. These are not pictures from the Unity Editor.
 
-### 01. 01-desktop-light-live-links.jpg
+### 01. Home page live links
 
-![Desktop, light theme. The live-links panel. Planned GitHub addresses are marked not live yet. Cards open the participation certificate and the 17-slide lecture deck.](docs/screenshots/01-desktop-light-live-links.jpg)
+![Home page live links, light theme](docs/screenshots/01-desktop-light-live-links.jpg)
 
-Desktop, light theme. The live-links panel. Planned GitHub addresses are marked not live yet. Cards open the participation certificate and the 17-slide lecture deck.
+Home page live links, light theme.
 
-### 02. 02-desktop-light-overview.jpg
+### 02. Workshop overview
 
-![Desktop, light theme. Overview naming the small vrscene and the separate 3.5 MB VRScene, and stating Courtyard Walk does not play them.](docs/screenshots/02-desktop-light-overview.jpg)
+![Workshop overview, light theme](docs/screenshots/02-desktop-light-overview.jpg)
 
-Desktop, light theme. Overview naming the small vrscene and the separate 3.5 MB VRScene, and stating Courtyard Walk does not play them.
+Workshop overview, light theme.
 
-### 03. 03-desktop-light-workshop-vs-extension.jpg
+### 03. Workshop files next to the new courtyard work
 
-![Desktop, light theme. Side-by-side list of workshop evidence and portfolio extensions. The left column only claims files that were in the original project. The right column is the new Courtyard Walk work.](docs/screenshots/03-desktop-light-workshop-vs-extension.jpg)
+![Workshop files next to the new courtyard work](docs/screenshots/03-desktop-light-workshop-vs-extension.jpg)
 
-Desktop, light theme. Side-by-side list of workshop evidence and portfolio extensions. The left column only claims files that were in the original project. The right column is the new Courtyard Walk work.
+Workshop files next to the new courtyard work.
 
-### 04. 04-desktop-light-demo-start.jpg
+### 04. Concept demo at the start
 
-![Desktop, light theme. Browser concept illustration at the spawn, zero orbs collected. The warning above the canvas says this is JavaScript, not a Unity player and not a WebGL build. The teal disc is the walker, gold discs are orbs, the red rectangle is the reset pad.](docs/screenshots/04-desktop-light-demo-start.jpg)
+![Concept demo at the start](docs/screenshots/04-desktop-light-demo-start.jpg)
 
-Desktop, light theme. Browser concept illustration at the spawn, zero orbs collected. The warning above the canvas says this is JavaScript, not a Unity player and not a WebGL build. The teal disc is the walker, gold discs are orbs, the red rectangle is the reset pad.
+Concept demo at the start.
 
-### 05. 05-desktop-light-demo-moved.jpg
+### 05. Concept demo after moving
 
-![Desktop, light theme. Same illustration after scripted eastward input. The status line reads that no orb has been touched, and the teal disc has left the southern spawn. This is the movement rule from Walker.cs drawn on a canvas.](docs/screenshots/05-desktop-light-demo-moved.jpg)
+![Concept demo after moving](docs/screenshots/05-desktop-light-demo-moved.jpg)
 
-Desktop, light theme. Same illustration after scripted eastward input. The status line reads that no orb has been touched, and the teal disc has left the southern spawn. This is the movement rule from Walker.cs drawn on a canvas.
+Concept demo after moving.
 
-### 06. 06-desktop-light-demo-collected.jpg
+### 06. Concept demo with two orbs collected
 
-![Desktop, light theme. Two orbs have been collected. Those two gold discs are gone, the status says an orb was collected, and three remain. The count matches CollectibleOrb plus CourtyardSession.](docs/screenshots/06-desktop-light-demo-collected.jpg)
+![Concept demo with two orbs collected](docs/screenshots/06-desktop-light-demo-collected.jpg)
 
-Desktop, light theme. Two orbs have been collected. Those two gold discs are gone, the status says an orb was collected, and three remain. The count matches CollectibleOrb plus CourtyardSession.
+Concept demo with two orbs collected.
 
-### 07. 07-desktop-light-demo-clear.jpg
+### 07. Concept demo with all orbs collected
 
-![Desktop, light theme. All five orbs are collected. The status begins with Courtyard clear. No gold discs remain inside the walls.](docs/screenshots/07-desktop-light-demo-clear.jpg)
+![Concept demo with all orbs collected](docs/screenshots/07-desktop-light-demo-clear.jpg)
 
-Desktop, light theme. All five orbs are collected. The status begins with Courtyard clear. No gold discs remain inside the walls.
+Concept demo with all orbs collected.
 
-### 08. 08-desktop-light-demo-pad.jpg
+### 08. Concept demo after hitting the reset pad
 
-![Desktop, light theme. After two collections the walker overlaps the red pad. The status says the pad sent the walker back to the start and that taken orbs stay taken. The score is still 2, which is the pad rule rather than a full restart.](docs/screenshots/08-desktop-light-demo-pad.jpg)
+![Concept demo after hitting the reset pad](docs/screenshots/08-desktop-light-demo-pad.jpg)
 
-Desktop, light theme. After two collections the walker overlaps the red pad. The status says the pad sent the walker back to the start and that taken orbs stay taken. The score is still 2, which is the pad rule rather than a full restart.
+Concept demo after hitting the reset pad.
 
-### 09. 09-desktop-dark-hero.jpg
+### 09. Home page header
 
-![Desktop, dark theme. The top of the home page: title, the not-live banner, and the header controls. The theme button offers a return to the light theme. Text is the light ink on the dark paper color.](docs/screenshots/09-desktop-dark-hero.jpg)
+![Home page header, dark theme](docs/screenshots/09-desktop-dark-hero.jpg)
 
-Desktop, dark theme. The top of the home page: title, the not-live banner, and the header controls. The theme button offers a return to the light theme. Text is the light ink on the dark paper color.
+Home page header, dark theme.
 
-### 10. 10-desktop-dark-search-collision.jpg
+### 10. Search for collision
 
-![Desktop, dark theme. Search query collision. The result list is limited to notes and pages that mention collision, collectibles, or the reset pad. The search field shows the typed query.](docs/screenshots/10-desktop-dark-search-collision.jpg)
+![Search for collision, dark theme](docs/screenshots/10-desktop-dark-search-collision.jpg)
 
-Desktop, dark theme. Search query collision. The result list is limited to notes and pages that mention collision, collectibles, or the reset pad. The search field shows the typed query.
+Search for collision, dark theme.
 
-### 11. 11-desktop-dark-search-empty.jpg
+### 11. Search with no results
 
-![Desktop, dark theme. Search query zzzz-no-such-topic. The page shows the empty state: no notes, source files, or project pages match. This is a real filter result, not a hidden section.](docs/screenshots/11-desktop-dark-search-empty.jpg)
+![Search with no results, dark theme](docs/screenshots/11-desktop-dark-search-empty.jpg)
 
-Desktop, dark theme. Search query zzzz-no-such-topic. The page shows the empty state: no notes, source files, or project pages match. This is a real filter result, not a hidden section.
+Search with no results, dark theme.
 
-### 12. 12-desktop-light-outcomes.jpg
+### 12. Learning outcomes on the home page
 
-![Desktop, light theme. Learning outcomes, each tied to a file that exists in this tree. The list does not claim a finished VR game or a desert-city level.](docs/screenshots/12-desktop-light-outcomes.jpg)
+![Learning outcomes on the home page](docs/screenshots/12-desktop-light-outcomes.jpg)
 
-Desktop, light theme. Learning outcomes, each tied to a file that exists in this tree. The list does not claim a finished VR game or a desert-city level.
+Learning outcomes on the home page.
 
-### 13. 13-desktop-light-architecture.jpg
+### 13. Courtyard Walk architecture
 
-![Desktop, light theme. Architecture of Courtyard Walk: the scene holds a light, a camera, and CourtyardBootstrap. Awake calls CourtyardBuild, which creates primitives and wires Walker, the session, the HUD, and FollowCamera.](docs/screenshots/13-desktop-light-architecture.jpg)
+![Courtyard Walk architecture](docs/screenshots/13-desktop-light-architecture.jpg)
 
-Desktop, light theme. Architecture of Courtyard Walk: the scene holds a light, a camera, and CourtyardBootstrap. Awake calls CourtyardBuild, which creates primitives and wires Walker, the session, the HUD, and FollowCamera.
+Courtyard Walk architecture.
 
-### 14. 14-tablet-light-home.jpg
+### 14. Home page on a tablet
 
-![Tablet width, light theme. The home page in a 768-pixel viewport. The title wraps, live-link cards stack, and the header stays on one row without a horizontal scrollbar.](docs/screenshots/14-tablet-light-home.jpg)
+![Home page on a tablet](docs/screenshots/14-tablet-light-home.jpg)
 
-Tablet width, light theme. The home page in a 768-pixel viewport. The title wraps, live-link cards stack, and the header stays on one row without a horizontal scrollbar.
+Home page on a tablet.
 
-### 15. 15-tablet-dark-demo.jpg
+### 15. Concept demo on a tablet
 
-![Tablet width, dark theme, scrolled to the concept demo after two collections. The canvas, status line, and touch pad sit in one column. The page background is the dark theme, distinct from the tablet light shot.](docs/screenshots/15-tablet-dark-demo.jpg)
+![Concept demo on a tablet, dark theme](docs/screenshots/15-tablet-dark-demo.jpg)
 
-Tablet width, dark theme, scrolled to the concept demo after two collections. The canvas, status line, and touch pad sit in one column. The page background is the dark theme, distinct from the tablet light shot.
+Concept demo on a tablet, dark theme.
 
-### 16. 16-mobile-light-home.jpg
+### 16. Home page on a phone
 
-![Phone width, light theme, menu closed. The Menu button is visible, the brand stacks, and the live-link cards are a single column. This is the closed-navigation state.](docs/screenshots/16-mobile-light-home.jpg)
+![Home page on a phone, menu closed](docs/screenshots/16-mobile-light-home.jpg)
 
-Phone width, light theme, menu closed. The Menu button is visible, the brand stacks, and the live-link cards are a single column. This is the closed-navigation state.
+Home page on a phone, menu closed.
 
-### 17. 17-mobile-light-nav.jpg
+### 17. Home page on a phone
 
-![Phone width, light theme, menu open. Learning, Source, Project, and Provenance are expanded under the header. The Menu button reports the expanded state to assistive technology.](docs/screenshots/17-mobile-light-nav.jpg)
+![Home page on a phone, menu open](docs/screenshots/17-mobile-light-nav.jpg)
 
-Phone width, light theme, menu open. Learning, Source, Project, and Provenance are expanded under the header. The Menu button reports the expanded state to assistive technology.
+Home page on a phone, menu open.
 
-### 18. 18-mobile-dark-demo.jpg
+### 18. Concept demo on a phone
 
-![Phone width, dark theme. The concept demo after movement, with the on-screen pad (north, west, east, south) and Restart walk. The warning that this is not Unity remains on screen.](docs/screenshots/18-mobile-dark-demo.jpg)
+![Concept demo on a phone, dark theme](docs/screenshots/18-mobile-dark-demo.jpg)
 
-Phone width, dark theme. The concept demo after movement, with the on-screen pad (north, west, east, south) and Restart walk. The warning that this is not Unity remains on screen.
+Concept demo on a phone, dark theme.
 
-### 19. 19-mobile-light-search.jpg
+### 19. Search for walker on a phone
 
-![Phone width, light theme. Search query walker. Results point at Walker.cs and the movement notes. The field is full width and the chips wrap instead of overflowing.](docs/screenshots/19-mobile-light-search.jpg)
+![Search for walker on a phone](docs/screenshots/19-mobile-light-search.jpg)
 
-Phone width, light theme. Search query walker. Results point at Walker.cs and the movement notes. The field is full width and the chips wrap instead of overflowing.
+Search for walker on a phone.
 
-### 20. 20-learning-player-loop.jpg
+### 20. Player-loop notes
 
-![Desktop, light theme. Player-loop note. The original sentences from Unity Learning.txt are quoted, then corrected: LateUpdate is every frame after Update, and FixedUpdate follows the 0.02 second timestep in TimeManager, not a ten-second delay.](docs/screenshots/20-learning-player-loop.jpg)
+![Player-loop notes](docs/screenshots/20-learning-player-loop.jpg)
 
-Desktop, light theme. Player-loop note. The original sentences from Unity Learning.txt are quoted, then corrected: LateUpdate is every frame after Update, and FixedUpdate follows the 0.02 second timestep in TimeManager, not a ten-second delay.
+Player-loop notes.
 
-### 21. 21-learning-pipelines-dark.jpg
+### 21. Render pipeline notes
 
-![Desktop, dark theme. Render-pipeline correction. The page says the workshop project used URP 17.0.3 because Starter Assets required it, and that Courtyard Walk uses the built-in pipeline so those packages are not required.](docs/screenshots/21-learning-pipelines-dark.jpg)
+![Render pipeline notes, dark theme](docs/screenshots/21-learning-pipelines-dark.jpg)
 
-Desktop, dark theme. Render-pipeline correction. The page says the workshop project used URP 17.0.3 because Starter Assets required it, and that Courtyard Walk uses the built-in pipeline so those packages are not required.
+Render pipeline notes, dark theme.
 
-### 22. 22-learning-movement.jpg
+### 22. Movement notes and the axis check
 
-![Desktop, light theme. The axis bug. The page shows that GetAxis values sit around -1 to 1, so the workshop test greater than -2 is always true, and that writing transform.position ignores colliders.](docs/screenshots/22-learning-movement.jpg)
+![Movement notes and the axis check](docs/screenshots/22-learning-movement.jpg)
 
-Desktop, light theme. The axis bug. The page shows that GetAxis values sit around -1 to 1, so the workshop test greater than -2 is always true, and that writing transform.position ignores colliders.
+Movement notes and the axis check.
 
-### 23. 23-learning-collision.jpg
+### 23. Collision
 
-![Desktop, light theme. Collision, collectible, and reset rules: CharacterController.Move, trigger orbs with kinematic rigidbodies, the red pad, and the R key restart.](docs/screenshots/23-learning-collision.jpg)
+![Collision, collectibles, and reset notes](docs/screenshots/23-learning-collision.jpg)
 
-Desktop, light theme. Collision, collectible, and reset rules: CharacterController.Move, trigger orbs with kinematic rigidbodies, the red pad, and the R key restart.
+Collision, collectibles, and reset notes.
 
-### 24. 24-learning-xr.jpg
+### 24. XR notes
 
-![Desktop, light theme. XR page. It separates the 39,578-byte vrscene from the 3.5 MB VRScene, notes both copies of the movement script are saved disabled, and does not call either scene playable.](docs/screenshots/24-learning-xr.jpg)
+![XR notes](docs/screenshots/24-learning-xr.jpg)
 
-Desktop, light theme. XR page. It separates the 39,578-byte vrscene from the 3.5 MB VRScene, notes both copies of the movement script are saved disabled, and does not call either scene playable.
+XR notes.
 
-### 25. 25-source-original.jpg
+### 25. Original movement script in the source reader
 
-![Desktop, light theme. Readable copy of the original root CharacterController.cs with a Copy button. The class name and the axis test are visible. The file on disk is the byte-identical note, not a rewritten script.](docs/screenshots/25-source-original.jpg)
+![Original movement script in the source reader](docs/screenshots/25-source-original.jpg)
 
-Desktop, light theme. Readable copy of the original root CharacterController.cs with a Copy button. The class name and the axis test are visible. The file on disk is the byte-identical note, not a rewritten script.
+Original movement script in the source reader.
 
-### 26. 26-source-walker-dark.jpg
+### 26. Walker.cs in the source reader
 
-![Desktop, dark theme. Walker.cs in the source reader. The script name is Walker, it requires the engine CharacterController, and Move is called from Update. This is the portfolio replacement, shown apart from the original.](docs/screenshots/26-source-walker-dark.jpg)
+![Walker.cs in the source reader, dark theme](docs/screenshots/26-source-walker-dark.jpg)
 
-Desktop, dark theme. Walker.cs in the source reader. The script name is Walker, it requires the engine CharacterController, and Move is called from Update. This is the portfolio replacement, shown apart from the original.
+Walker.cs in the source reader, dark theme.
 
-### 27. 27-project-setup.jpg
+### 27. Project setup for Unity 6000.0.26f1
 
-![Desktop, light theme. Setup for Unity 6000.0.26f1: open the folder that contains Assets, Packages, and ProjectSettings, then open CourtyardWalk and press Play. The page says this tree was not opened in the Editor here.](docs/screenshots/27-project-setup.jpg)
+![Project setup for Unity 6000.0.26f1](docs/screenshots/27-project-setup.jpg)
 
-Desktop, light theme. Setup for Unity 6000.0.26f1: open the folder that contains Assets, Packages, and ProjectSettings, then open CourtyardWalk and press Play. The page says this tree was not opened in the Editor here.
+Project setup for Unity 6000.0.26f1.
 
-### 28. 28-provenance-exclusions.jpg
+### 28. What was left out of this copy
 
-![Desktop, light theme. Provenance. Workshop scripts and both scene files are listed as included. Starter Assets, the character meshes, and the desert-city pack are named as references whose license is not treated as a ban or as a clearance.](docs/screenshots/28-provenance-exclusions.jpg)
+![What was left out of this copy](docs/screenshots/28-provenance-exclusions.jpg)
 
-Desktop, light theme. Provenance. Workshop scripts and both scene files are listed as included. Starter Assets, the character meshes, and the desert-city pack are named as references whose license is not treated as a ban or as a clearance.
+What was left out of this copy.
 
-### 29. 29-footer-back-to-top.jpg
+### 29. Footer and the back-to-top button
 
-![Desktop, light theme, scrolled to the footer. The author line names Mohammad Rohaan, FAST-NUCES, and github.com/rohaan2802. The fixed Top control is visible at the lower right.](docs/screenshots/29-footer-back-to-top.jpg)
+![Footer and the back-to-top button](docs/screenshots/29-footer-back-to-top.jpg)
 
-Desktop, light theme, scrolled to the footer. The author line names Mohammad Rohaan, FAST-NUCES, and github.com/rohaan2802. The fixed Top control is visible at the lower right.
+Footer and the back-to-top button.
 
-### 30. 30-desktop-dark-learning-filter.jpg
+### 30. Learning filter on the home page
 
-![Desktop, dark theme. The Learning chip is pressed and the text query is empty. Results are only learning pages, which is a different filter from the collision text search.](docs/screenshots/30-desktop-dark-learning-filter.jpg)
+![Learning filter on the home page, dark theme](docs/screenshots/30-desktop-dark-learning-filter.jpg)
 
-Desktop, dark theme. The Learning chip is pressed and the text query is empty. Results are only learning pages, which is a different filter from the collision text search.
+Learning filter on the home page, dark theme.
 
 
 ## Tests and the results that were actually recorded

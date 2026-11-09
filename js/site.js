@@ -24,9 +24,9 @@
     { kind: "Notes", title: "Workshop scenes", href: "workshop-evidence/README.md", text: "Small vrscene and the 3.5 MB VRScene are different GUIDs. City prefabs, disabled movement script, not playable here." },
     { kind: "Project", title: "Participation certificate", href: "proof/techconnect-2024.pdf", text: "TechConnect 2024 Unity Basics Bootcamp Competition. Participation only, not an award." },
     { kind: "Project", title: "Lecture slides", href: "proof/lecture-slides.pptx", text: "17 slides. Presenter Usama Bin Imran. Mohammad Rohaan workshop participant, not the author." },
-    { kind: "Project", title: "Workshop photo 1", href: "proof/photos/workshop-dsc07283.jpg", text: "Two people holding a participation certificate in a classroom." },
-    { kind: "Project", title: "Workshop photo 2", href: "proof/photos/workshop-img5587.jpg", text: "Workshop photo 2." },
-    { kind: "Project", title: "Workshop recording", href: "proof/video/unity-workshop.mp4", text: "Workshop recording." },
+    { kind: "Project", title: "Workshop photo 1", href: "proof/photos/workshop-dsc07283.jpg", text: "" },
+    { kind: "Project", title: "Workshop photo 2", href: "proof/photos/workshop-img5587.jpg", text: "" },
+    { kind: "Project", title: "Workshop recording", href: "proof/video/unity-workshop.mp4", text: "" },
     { kind: "Project", title: "Required and generated Unity files", href: "docs/unity-files.md", text: "Which meta files and settings are required, and which caches Unity regenerates." },
     { kind: "Notes", title: "Corrections", href: "docs/corrections.md", text: "Axis test, pipelines, LateUpdate, FixedUpdate, and the class name." }
   ];
@@ -102,11 +102,13 @@
       var a = document.createElement("a");
       a.href = root + item.href;
       a.textContent = item.title;
-      var p = document.createElement("p");
-      p.textContent = item.text;
       li.appendChild(k);
       li.appendChild(a);
-      li.appendChild(p);
+      if (item.text) {
+        var p = document.createElement("p");
+        p.textContent = item.text;
+        li.appendChild(p);
+      }
       results.appendChild(li);
     });
   }

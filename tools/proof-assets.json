@@ -5,7 +5,7 @@
       "path": "proof/photos/workshop-dsc07283.jpg",
       "bytes": 358199,
       "sha256": "c6a8f9c653f0a17fc7532384ab1aeba40490b95d7b1ff3d17cc514e60b3cbef6",
-      "label": "Workshop photo 1. Two people holding a participation certificate in a classroom. A computer screen is behind them."
+      "label": "Workshop photo 1"
     },
     {
       "path": "proof/photos/workshop-img5587.jpg",
@@ -16,7 +16,7 @@
     {
       "path": "proof/video/unity-workshop.mp4",
       "bytes": 24168913,
-      "sha256": "989c27753cc5d806d9e5aacabe7990cffaddc9eb57942a0b40c2f04e1be97f57",
+      "sha256": "ef5fa1c18cb3279aaf81e71dcd2a24b90df9722c83589714b6106c2b83faa8bc",
       "label": "Workshop recording"
     }
   ]
