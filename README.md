@@ -8,24 +8,11 @@ The canvas on the website is a **JavaScript concept illustration**. It is not a 
 
 ## Live links
 
-Planned names are not live. This folder was prepared locally and was not pushed.
-
 | What | Link |
 | --- | --- |
-| Planned repository after rename | https://github.com/rohaan2802/Unity_Work_Shop — **not live yet** |
-| Planned GitHub Pages site | https://rohaan2802.github.io/Unity_Work_Shop/ — **not live yet** |
-| Existing repository, current name | https://github.com/rohaan2802/Unity-WorkShop — exists today; history still has the old upload |
-| Courtyard scene | [Assets/Scenes/CourtyardWalk.unity](Assets/Scenes/CourtyardWalk.unity) |
-| Original movement script | [notes/movement/CharacterController.cs](notes/movement/CharacterController.cs) |
-| Original learning note | [notes/player-loop/Unity Learning.txt](notes/player-loop/Unity%20Learning.txt) |
-| Browser concept illustration | [index.html#concept-demo](index.html#concept-demo) |
-| Workshop scenes, with original GUIDs | [workshop-evidence/README.md](workshop-evidence/README.md) |
-| Scene file `vrscene` | [workshop-evidence/scenes/vrscene.unity](workshop-evidence/scenes/vrscene.unity) |
-| Participation certificate | [proof/techconnect-2024.pdf](proof/techconnect-2024.pdf) — TechConnect 2024 Unity Basics Bootcamp Competition. Participation, not an award. |
-| Lecture slides | [proof/lecture-slides.pptx](proof/lecture-slides.pptx) — 17 slides. Presenter Usama Bin Imran. Mohammad Rohaan is named as workshop participant, not as the author. |
-| Workshop photo 1 | [proof/photos/workshop-dsc07283.jpg](proof/photos/workshop-dsc07283.jpg) — two people holding a participation certificate in a classroom. A computer screen is behind them. |
-| Workshop photo 2 | [proof/photos/workshop-img5587.jpg](proof/photos/workshop-img5587.jpg) |
-| Workshop recording | [proof/video/unity-workshop.mp4](proof/video/unity-workshop.mp4) |
+| Repository | https://github.com/rohaan2802/Unity_Work_Shop |
+| GitHub Pages | https://rohaan2802.github.io/Unity_Work_Shop/ |
+| Participation certificate | https://rohaan2802.github.io/Unity_Work_Shop/proof/techconnect-2024.pdf |
 
 There is no GitHub Release for this portfolio. Do not look for a player zip on the Releases page. None was created.
 
